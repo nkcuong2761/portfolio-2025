@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { themes } from './assets/colors/alias.ts';
+import { themes } from '../assets/colors/alias.ts';
 
 type ThemeName = keyof typeof themes;
 type ThemeContextType = {

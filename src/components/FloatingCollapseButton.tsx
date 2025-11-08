@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
-import { useTheme } from '../ThemeContext.tsx';
-import { useCollapse } from '../CollapseContext.tsx';
+import { useTheme } from '../contexts/ThemeContext.tsx';
+import { useCollapse } from '../contexts/CollapseContext.tsx';
 import { ReactComponent as ArrowLineLeft } from '../assets/icons/arrow-line-left.svg';
 
 interface FloatingButtonProps {

@@ -6,7 +6,7 @@ const baseFontSizes = {
   md: '14px',
   lg: '16px',
   xl: '20px',
-  xxl: '24px',
+  xxl: '26px',
   xxxl: '32px',
   xxxxl: '48px',
 } as const;
@@ -25,7 +25,7 @@ const lineHeights = {
 } as const;
 
 const letterSpacing = {
-  tighter: '-0.em',
+  tighter: '-0.05em',
   tight: '-0.02em',
   normal: '0',
   wide: '0.02em',
@@ -36,9 +36,9 @@ export const typography = {
     dislay: {
       lg: {
         fontSize: baseFontSizes.xxxxl,
-        lineHeight: lineHeights.tight,
+        lineHeight: lineHeights.normal,
         fontWeight: fontWeights.regular,
-        letterSpacing: letterSpacing.tighter,
+        letterSpacing: letterSpacing.tight,
       },
       md: {
         regular: {

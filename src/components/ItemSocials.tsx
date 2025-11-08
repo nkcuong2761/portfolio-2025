@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
 import { Text } from '../Text.tsx';
-import { useTheme } from '../ThemeContext.tsx';
+import { useTheme } from '../contexts/ThemeContext.tsx';
 import {ReactComponent as ArrowSquareOut} from '../assets/icons/arrow-square-out.svg';
 
 interface ComponentProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
-import { useTheme } from '../ThemeContext.tsx';
+import { useTheme } from '../contexts/ThemeContext.tsx';
 import { Text } from '../Text.tsx';
 
 interface StyledButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

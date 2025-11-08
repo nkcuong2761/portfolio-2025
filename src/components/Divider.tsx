@@ -1,6 +1,6 @@
 import React from 'react';
 import { themes } from '../assets/colors/alias.ts';
-import { useTheme } from '../ThemeContext.tsx';
+import { useTheme } from '../contexts/ThemeContext.tsx';
 
 interface DividerProps {
   height?: string;

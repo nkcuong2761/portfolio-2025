@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
-import { useTheme } from '../ThemeContext.tsx';
+import { useTheme } from '../contexts/ThemeContext.tsx';
 import DropdownItem from './DropdownItem.tsx';
 import { ReactComponent as SekiraIcon } from '../assets/themeIcons/sekira.svg';
 import { ReactComponent as SekiraDarkIcon } from '../assets/themeIcons/sekira-dark.svg';

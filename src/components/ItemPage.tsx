@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
 import { Text } from '../Text.tsx';
-import { useTheme } from '../ThemeContext.tsx';
+import { useTheme } from '../contexts/ThemeContext.tsx';
+import { usePage } from '../contexts/PageContext.tsx';
 
 interface PageProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  initialActive?: boolean;
   label: string;
 }
 
@@ -40,12 +40,14 @@ const StyledChip = styled.button<StyledPageProps>`
   }
 `;
 
-export const Page: React.FC<PageProps> = ({ label, initialActive = false, onClick, ...props }) => {
+export const Page: React.FC<PageProps> = ({ label, onClick, ...props }) => {
   const { theme } = useTheme();
-  const [isActive, setIsActive] = useState<boolean>(initialActive);
+  const { currentPage, setCurrentPage } = usePage();
+  
+  const isActive = currentPage === label;
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    setIsActive((s) => !s);
+    setCurrentPage(label as any); // Type assertion for now
     if (onClick) onClick(e);
   };
 

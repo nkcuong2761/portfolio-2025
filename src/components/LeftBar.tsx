@@ -1,6 +1,6 @@
 import React from 'react';
 import { themes } from '../assets/colors/alias.ts';
-import { useTheme } from '../ThemeContext.tsx';
+import { useTheme } from '../contexts/ThemeContext.tsx';
 import { Text } from '../Text.tsx';
 import {ReactComponent as FigmaLogo} from '../assets/icons/figma-logo.svg';
 import {ReactComponent as Frame} from '../assets/icons/frame.svg';
@@ -9,7 +9,6 @@ import { LayoutHorizontal } from './LayoutHorizontal.tsx';
 import Divider from './Divider.tsx';
 import Chip from './Chip.tsx';
 import Page from './ItemPage.tsx';
-import Message from './Message.tsx';
 import Layer from './ItemLayer.tsx';
 import { ThemeSwitcher } from './ThemeSwitcher.tsx';
 
@@ -26,8 +25,8 @@ export const LeftBar: React.FC = () => {
     backgroundColor={theming.bg.page.lighter}
     style={{
       borderRight: '1px solid ' + theming.stroke.neutral.divider,
-      position: 'fixed',
-      left: 0,
+      zIndex: 10,
+      flexShrink: 0,
     }}>
 
       {/* Sidebar Header */}
@@ -102,7 +101,7 @@ export const LeftBar: React.FC = () => {
         <LayoutVertical
         gap='8px'
         alignSelf='stretch'>
-          <Page label='Home' initialActive/>
+          <Page label='Home'/>
           <Page label='About me'/>
           <Page label='Resume'/>
         </LayoutVertical>

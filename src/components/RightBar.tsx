@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
-import { useTheme } from '../ThemeContext.tsx';
-import { useCollapse } from '../CollapseContext.tsx';
+import { useTheme } from '../contexts/ThemeContext.tsx';
+import { useCollapse } from '../contexts/CollapseContext.tsx';
 import { Text } from '../Text.tsx';
 import {ReactComponent as Logo} from '../assets/icons/cuong-logo.svg';
 import {ReactComponent as IconChat} from '../assets/icons/chat.svg';
@@ -24,14 +24,14 @@ interface RightBarContainerProps {
 
 const RightBarContainer = styled.div<RightBarContainerProps>`
   width: 224px;
-  height: 100vh;
+  height: 100%;
   background-color: ${(p) => themes[p.currentTheme].bg.page.lighter};
   border-left: 1px solid ${(p) => themes[p.currentTheme].stroke.neutral.divider};
-  position: fixed;
   right: 0;
   transform: translateX(${(p) => p.isCollapsed ? '100%' : '0'});
   transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10;
+  flex-shrink: 0;
 `;
 
 export const RightBar: React.FC = () => {

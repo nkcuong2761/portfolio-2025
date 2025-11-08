@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
-import { useTheme } from '../ThemeContext.tsx';
+import { useTheme } from '../contexts/ThemeContext.tsx';
 import {ReactComponent as Caret} from '../assets/icons/caret-down.svg';
 import {ReactComponent as Palette} from '../assets/icons/palette.svg';
 import DropdownWrapper from './DropdownWrapper.tsx';

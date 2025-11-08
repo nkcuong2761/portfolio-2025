@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
 import { Text } from '../Text.tsx';
-import { useTheme } from '../ThemeContext.tsx';
+import { useTheme } from '../contexts/ThemeContext.tsx';
 
 interface LayerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isActive: boolean;

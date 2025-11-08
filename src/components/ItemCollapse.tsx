@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
 import { Text } from '../Text.tsx';
-import { useTheme } from '../ThemeContext.tsx';
-import { useCollapse } from '../CollapseContext.tsx';
+import { useTheme } from '../contexts/ThemeContext.tsx';
+import { useCollapse } from '../contexts/CollapseContext.tsx';
 import { ReactComponent as ArrowLineRight } from '../assets/icons/arrow-line-right.svg';
 
 interface ComponentProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
