@@ -7,6 +7,7 @@ import { usePage } from '../contexts/PageContext.tsx';
 
 interface PageProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
+  isProject?: boolean;
 }
 
 interface StyledPageProps {
@@ -40,14 +41,14 @@ const StyledChip = styled.button<StyledPageProps>`
   }
 `;
 
-export const Page: React.FC<PageProps> = ({ label, onClick, ...props }) => {
+export const Page: React.FC<PageProps> = ({ label, isProject = false, onClick, ...props }) => {
   const { theme } = useTheme();
   const { currentPage, setCurrentPage } = usePage();
   
   const isActive = currentPage === label;
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    setCurrentPage(label as any); // Type assertion for now
+    setCurrentPage(label as PageName);
     if (onClick) onClick(e);
   };
 
@@ -58,10 +59,13 @@ export const Page: React.FC<PageProps> = ({ label, onClick, ...props }) => {
       isActive={isActive}
       currentTheme={theme}
       onClick={handleClick}
+      style={{
+        paddingLeft: isProject ? '20px' : '6px',
+      }}
       {...props}
     >
       <Text variant={isActive ? 'figmaSubtitleSmMedium' : 'figmaSubtitleSmRegular'}>
-        {label}
+        {isProject ? `↳ ${label}` : label}
       </Text>
     </StyledChip>
   );

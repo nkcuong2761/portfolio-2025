@@ -9,7 +9,6 @@ import {ReactComponent as IconChat} from '../assets/icons/chat.svg';
 import {ReactComponent as Linkedin} from '../assets/icons/linkedin-logo.svg';
 import {ReactComponent as Medium} from '../assets/icons/medium-logo.svg';
 import {ReactComponent as Dribbble} from '../assets/icons/dribbble-logo.svg';
-import {ReactComponent as ArrowLineRight} from '../assets/icons/arrow-line-right.svg';
 import { LayoutVertical } from './LayoutVertical.tsx';
 import { LayoutHorizontal } from './LayoutHorizontal.tsx';
 import Divider from './Divider.tsx';
@@ -24,14 +23,17 @@ interface RightBarContainerProps {
 
 const RightBarContainer = styled.div<RightBarContainerProps>`
   width: 224px;
-  height: 100%;
+  height: 100vh;
   background-color: ${(p) => themes[p.currentTheme].bg.page.lighter};
   border-left: 1px solid ${(p) => themes[p.currentTheme].stroke.neutral.divider};
+  position: fixed;
   right: 0;
-  transform: translateX(${(p) => p.isCollapsed ? '100%' : '0'});
-  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  top: 0;
   z-index: 10;
   flex-shrink: 0;
+  
+  transform: translateX(${(p) => p.isCollapsed ? '100%' : '0'});
+  transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94); /* ease-out */
 `;
 
 export const RightBar: React.FC = () => {
@@ -42,10 +44,10 @@ export const RightBar: React.FC = () => {
   return (
     <RightBarContainer isCollapsed={isCollapsed} currentTheme={theme}>
       <LayoutVertical
-      width='224px'
-      height='100vh'
-      gap='0px'
-      padding='0px'>
+        width='224px'
+        height='100vh'
+        gap='0px'
+        padding='0px'>
 
         {/* Top bar */}
         <LayoutVertical

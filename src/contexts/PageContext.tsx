@@ -1,7 +1,7 @@
 // Create PageContext.tsx
 import React, { createContext, useContext, useState } from 'react';
 
-type PageName = 'Home' | 'About me' | 'Resume';
+type PageName = 'Home' | 'Techcombank Design System' | 'Foreign Currency Payroll' | 'GoodHood.SG' | 'About me' | 'Resume';
 
 type PageContextType = {
   currentPage: PageName;

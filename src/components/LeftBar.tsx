@@ -102,6 +102,9 @@ export const LeftBar: React.FC = () => {
         gap='8px'
         alignSelf='stretch'>
           <Page label='Home'/>
+          <Page label='Techcombank Design System' isProject={true}/>
+          <Page label='Foreign Currency Payroll' isProject={true}/>
+          <Page label='GoodHood.SG' isProject={true}/>
           <Page label='About me'/>
           <Page label='Resume'/>
         </LayoutVertical>

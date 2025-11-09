@@ -1,3 +1,6 @@
+/* Add this to src/index.css */
+
+/* Remove default scrollbars globally */
 * {
   box-sizing: border-box;
 }
@@ -7,6 +10,25 @@ html, body {
   padding: 0;
   height: 100%;
   overflow: hidden;
+  /* Remove scrollbars on webkit browsers (Chrome, Safari) */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Remove webkit scrollbars */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* For the Home content area - custom scrollbar styling */
+.home-scroll::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.home-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 #root {
