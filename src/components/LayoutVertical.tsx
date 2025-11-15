@@ -12,6 +12,7 @@ interface LayoutProps {
   justifyContent?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 const Vertical = styled.div<LayoutProps>`
@@ -37,7 +38,8 @@ export const LayoutVertical: React.FC<LayoutProps> = ({
   alignSelf,
   justifyContent,
   style,
-  children
+  children,
+  onClick
 }) => {
   return (
   <Vertical
@@ -49,7 +51,8 @@ export const LayoutVertical: React.FC<LayoutProps> = ({
     backgroundColor={backgroundColor}
     alignSelf={alignSelf}
     justifyContent={justifyContent}
-    style={style}>
+    style={style}
+    onClick={onClick}>
     {children}
   </Vertical>
 )}

@@ -3,16 +3,16 @@ import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
 import { Text } from '../Text.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
-import { usePage } from '../contexts/PageContext.tsx';
+import { usePage, PageName } from '../contexts/PageContext.tsx';
 
 interface PageProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  label: string;
+  label: PageName;
   isProject?: boolean;
 }
 
 interface StyledPageProps {
   isActive?: boolean;
-  label: string;
+  label: PageName;
   currentTheme: keyof typeof themes;
 }
 
@@ -48,7 +48,7 @@ export const Page: React.FC<PageProps> = ({ label, isProject = false, onClick, .
   const isActive = currentPage === label;
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    setCurrentPage(label as PageName);
+    setCurrentPage(label);
     if (onClick) onClick(e);
   };
 

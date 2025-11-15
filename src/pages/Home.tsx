@@ -2,6 +2,7 @@ import React from 'react';
 import { themes } from '../assets/colors/alias.ts';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 import { useCollapse } from '../contexts/CollapseContext.tsx';
+import { usePage } from '../contexts/PageContext.tsx';
 import { LayoutVertical } from '../components/LayoutVertical.tsx';
 import { LayoutHorizontal } from '../components/LayoutHorizontal.tsx';
 import { Text } from '../Text.tsx';
@@ -15,6 +16,7 @@ export const Home: React.FC = () => {
   const { theme } = useTheme();
   const theming = themes[theme];
   const { isCollapsed } = useCollapse();
+  const { setCurrentPage } = usePage();
 
   return (
     <LayoutVertical
@@ -123,11 +125,13 @@ export const Home: React.FC = () => {
           {/* First Project - Full Width - Techcombank Design System */}
           <LayoutVertical
             alignSelf='stretch'
+            onClick={() => setCurrentPage('Techcombank Design System')}
             style={{
               borderRadius: '12px',
               border: `1px solid ${theming.stroke.neutral.border}`,
               overflow: 'hidden',
               height: '480px',
+              cursor: 'pointer',
             }}>
             {/* Project Image Container */}
             <LayoutHorizontal
@@ -179,12 +183,14 @@ export const Home: React.FC = () => {
             
             {/* Second Project - Foreign Currency Payroll */}
             <LayoutVertical
+              onClick={() => setCurrentPage('Foreign Currency Payroll')}
               style={{
                 flex: 1,
                 borderRadius: '12px',
                 border: `1px solid ${theming.stroke.neutral.border}`,
                 overflow: 'hidden',
                 height: '480px',
+                cursor: 'pointer',
               }}>
               {/* Project Image Container */}
               <LayoutHorizontal
@@ -224,12 +230,14 @@ export const Home: React.FC = () => {
 
             {/* Third Project - GoodHood.SG */}
             <LayoutVertical
+              onClick={() => setCurrentPage('GoodHood.SG')}
               style={{
                 flex: 1,
                 borderRadius: '12px',
                 border: `1px solid ${theming.stroke.neutral.border}`,
                 overflow: 'hidden',
                 height: '480px',
+                cursor: 'pointer',
               }}>
               {/* Project Image Container */}
               <LayoutHorizontal
