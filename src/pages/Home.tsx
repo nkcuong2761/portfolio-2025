@@ -23,7 +23,7 @@ export const Home: React.FC = () => {
       width='100%'
       height='100vh'
       padding='92px 48px'
-      gap='92px'
+      gap='156px'
       alignItems='flex-start'
       alignSelf='stretch'
       style={{

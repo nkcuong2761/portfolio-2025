@@ -5,6 +5,7 @@ interface ThemeColors {
     page: {
       muted: string;
       lighter: string;
+      darker: string;
     };
     neutral: {
       primary: string;
@@ -13,6 +14,7 @@ interface ThemeColors {
       hover: string;
       secondaryHover: string;
       tertiaryHover: string;
+      alpha: string;
     };
     accent: {
       primary: string;
@@ -58,7 +60,8 @@ export const sekira: ThemeColors = {
   bg: {
     page: {
       muted: globalColor.grey[100],
-      lighter: globalColor.grey[0]
+      lighter: globalColor.grey[0],
+      darker: globalColor.grey[200]
     },
     neutral: {
       primary: globalColor.grey[0],
@@ -66,7 +69,8 @@ export const sekira: ThemeColors = {
       tertiary: globalColor.grey[200],
       hover: globalColor.alpha.black[200],
       secondaryHover: globalColor.alpha.black[300],
-      tertiaryHover: globalColor.alpha.black[400]
+      tertiaryHover: globalColor.alpha.black[400],
+      alpha: globalColor.alpha.black[500]
     },
     accent: {
       primary: globalColor.blue[300],
@@ -116,7 +120,8 @@ export const sekiraDark: ThemeColors = {
   bg: {
     page: {
       muted: globalColor.grey[900],
-      lighter: globalColor.grey[800]
+      lighter: globalColor.grey[800],
+      darker: globalColor.grey[1000]
     },
     neutral: {
       primary: globalColor.grey[900],
@@ -124,7 +129,8 @@ export const sekiraDark: ThemeColors = {
       tertiary: globalColor.grey[700],
       hover: globalColor.alpha.white[200],
       secondaryHover: globalColor.alpha.white[300],
-      tertiaryHover: globalColor.alpha.white[400]
+      tertiaryHover: globalColor.alpha.white[400],
+      alpha: 'rgba(30, 30, 30, 0.50)'
     },
     accent: {
       primary: globalColor.blue[400],
@@ -174,7 +180,8 @@ export const zimaBlue: ThemeColors = {
   bg: {
     page: {
       muted: globalColor.grey[100],
-      lighter: globalColor.grey[0]
+      lighter: globalColor.grey[0],
+      darker: globalColor.grey[200]
     },
     neutral: {
       primary: globalColor.grey[0],
@@ -182,7 +189,8 @@ export const zimaBlue: ThemeColors = {
       tertiary: globalColor.grey[200],
       hover: globalColor.alpha.black[200],
       secondaryHover: globalColor.alpha.black[300],
-      tertiaryHover: globalColor.alpha.black[400]
+      tertiaryHover: globalColor.alpha.black[400],
+      alpha: 'rgba(30, 30, 30, 0.10)'
     },
     accent: {
       primary: globalColor.yellow[300],

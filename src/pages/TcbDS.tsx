@@ -1,9 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { themes } from '../assets/colors/alias.ts';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 import { useCollapse } from '../contexts/CollapseContext.tsx';
 import { LayoutVertical } from '../components/LayoutVertical.tsx';
+import { LayoutHorizontal } from '../components/LayoutHorizontal.tsx';
 import { Text } from '../Text.tsx';
+import { TextCard } from '../components/TextCard.tsx';
+
+// Image URLs from Figma
+const imgAtoms = "https://i.postimg.cc/fWqQM7Yz/atoms.png";
+const imgMolecules = "https://i.postimg.cc/WpYcsm02/molecules.png";
+const imgOrganisms = "https://i.postimg.cc/BZ7fJ52Z/organisms.png";
+const imgTemplates = "https://i.postimg.cc/vH1FT1vw/templates.png";
+const imgVariables1 = "https://i.postimg.cc/QNYZjg1Y/variable_1.png";
+const imgVariables2 = "https://i.postimg.cc/ryZ2qGx7/variable_2.png";
+const imgAudit = "https://i.postimg.cc/w648dQzW/audit.jpg";
+const imgConsolidate = "https://i.postimg.cc/csLyj5pC/consolidate.png";
+const imgLandscape = "https://i.postimg.cc/J1zVgdfs/landscape.png";
+const imgSpec = "https://i.postimg.cc/VLSQvSW3/spec.png";
+const imgDoc1 = "https://i.postimg.cc/csLyj5V9/doc-1.png";
+const imgDoc2 = "https://i.postimg.cc/p2Lb71g7/doc-2.png";
+const imgDoc3 = "https://i.postimg.cc/MWp24rhN/doc-3.png";
+const imgDoc4 = "https://i.postimg.cc/mbgfq606/doc-4.png";
+
+const painPoints = [
+  'insufficient components and tendency to detach components',
+  'lacks of scalability (color, typography for different tiers, products)',
+  'same usage & behavior, different UI',
+  'designers cannot find/use components created by others due to difference in knowledge/component structure',
+  'no documentations and guidelines for components/pattern usage',
+  'no communication of design system to other engineering departments',
+  'feature engineers do not communicate with other teams when a component is updated',
+  'due to frequent encounter with new design pattern, engineers struggle to meet deadlines',
+  'engineers are forced to reuse old pattern, creating mis-match between design & production',
+];
+
+const PainPointsCards: React.FC = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '0px',
+        marginLeft: '-20px', // Negative margin for overlapping effect
+        marginRight: '-20px',
+        marginTop: '-10px',
+        alignSelf: 'stretch',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      {painPoints.map((point, index) => (
+        <div
+          key={index}
+          style={{
+            marginLeft: index > 0 ? '-20px' : '0px', // Overlap each card
+          }}>
+          <TextCard
+            text={point}
+            index={index}
+            activeIndex={activeIndex}
+            onActivate={setActiveIndex}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export const TcbDS: React.FC = () => {
   const { theme } = useTheme();
@@ -14,8 +78,8 @@ export const TcbDS: React.FC = () => {
     <LayoutVertical
       width='100%'
       height='100vh'
-      padding='92px 48px'
-      gap='92px'
+      padding='156px 0px'
+      gap='156px'
       alignItems='flex-start'
       alignSelf='stretch'
       style={{
@@ -26,259 +90,932 @@ export const TcbDS: React.FC = () => {
         transition: 'margin-right 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94)', /* ease-out */
       }}
     >
-
-    {/* Techcombank Design System Project Page */}
-
-    {/* Greeting Section */}
-    <LayoutVertical
-      alignSelf='stretch'
-      gap='8px'>
-      <Text
-        variant='figmaSubtitleSmRegular'
-        color={theming.textIcon.neutral.tertiary}>
-        Greetings
-      </Text>
+      {/* 01 — Project Overview */}
       <LayoutVertical
         alignSelf='stretch'
-        padding='60px 40px'
-        style={{
-          borderRadius: '12px',
-          backgroundColor: theming.bg.neutral.secondary,
-          border: `1px solid ${theming.stroke.neutral.border}`,
-        }}>
-        <Text
-          variant='mainDisplayLg'
-          color={theming.textIcon.neutral.primary}>
-          Techcombank Design System
-        </Text>
-        <Text
-          variant='figmaSubtitleMdRegular'
-          color={theming.textIcon.neutral.secondary}
-          style={{ marginTop: 12, maxWidth: 700, lineHeight: 1.6 }}
-        >
-          Building a robust, scalable, and cross-platform design system for Techcombank, empowering 30+ product teams to accelerate design and development with universal UI components and guidelines.
-        </Text>
+        gap='36px'
+        padding='0px 48px'>
+        <LayoutVertical
+          alignSelf='stretch'
+          gap='24px'>
+          <Text
+            variant='figmaSubtitleSmRegular'
+            color={theming.textIcon.neutral.tertiary}>
+            01 — Project Overview
+          </Text>
+          <Text
+            variant='mainDisplayLg'
+            color={theming.textIcon.neutral.primary}>
+            Techcombank Design System
+          </Text>
+          <Text
+            variant='mainBodyLg'
+            color={theming.textIcon.neutral.secondary}>
+            A unified visual language for all banking platforms—built to scale, governed with precision.
+          </Text>
+        </LayoutVertical>
+        
+        {/* Hero Image */}
+        <LayoutVertical
+          alignSelf='stretch'
+          style={{
+            height: '400px',
+            borderRadius: '12px',
+            backgroundColor: theming.bg.neutral.secondary,
+            border: `0.5px solid ${theming.stroke.neutral.border}`,
+            overflow: 'hidden',
+            position: 'relative',
+          }}>
+          {/* TODO: Add hero image */}
+        </LayoutVertical>
+
+        {/* Building a foundation section */}
+        <LayoutVertical
+          alignSelf='stretch'
+          gap='24px'>
+          <Text
+            variant='mainHeadingLg'
+            color={theming.textIcon.neutral.primary}>
+            Building a foundation for digital banking
+          </Text>
+          <Text
+            variant='mainBodyMdRegular'
+            color={theming.textIcon.neutral.secondary}>
+            Techcombank's digital ecosystem is expanding across web, mobile, and internal tools. However, inconsistencies in UI components and design decisions have created friction for users and the product team. I played a key role in developing a design system that unifies the visual language across Techcombank's five digital platforms, enabling faster and more consistent product development.
+          </Text>
+          
+          {/* Project Info Box */}
+          <LayoutVertical
+            alignSelf='stretch'
+            padding='24.5px'
+            style={{
+              borderRadius: '12px',
+              backgroundColor: theming.bg.neutral.secondary,
+              border: `0.5px solid ${theming.stroke.neutral.border}`,
+            }}>
+            <LayoutHorizontal
+              alignSelf='stretch'
+              gap='24px'
+              alignItems='flex-start'>
+              {/* Role */}
+              <LayoutVertical
+                style={{ flex: 1 }}
+                gap='16px'>
+                <Text
+                  variant='figmaSubtitleSmRegular'
+                  color={theming.textIcon.neutral.tertiary}>
+                  Role
+                </Text>
+                <LayoutVertical gap='8px'>
+                  <Text
+                    variant='mainHeadingMd'
+                    color={theming.textIcon.neutral.primary}>
+                    UX Designer - Admin
+                  </Text>
+                  <Text
+                    variant='mainBodyMdRegular'
+                    color={theming.textIcon.neutral.secondary}>
+                    System architecture, tokens creation, component design, documentation, governance
+                  </Text>
+                </LayoutVertical>
+              </LayoutVertical>
+
+              {/* Divider */}
+              <LayoutVertical
+                style={{
+                  width: '1px',
+                  height: '100%',
+                  backgroundColor: theming.stroke.neutral.divider,
+                }}
+              />
+
+              {/* Timeline */}
+              <LayoutVertical
+                style={{ flex: 1 }}
+                gap='16px'>
+                <Text
+                  variant='figmaSubtitleSmRegular'
+                  color={theming.textIcon.neutral.tertiary}>
+                  Timeline
+                </Text>
+                <LayoutVertical gap='8px'>
+                  <Text
+                    variant='mainHeadingMd'
+                    color={theming.textIcon.neutral.primary}>
+                    Ongoing
+                  </Text>
+                  <Text
+                    variant='mainBodyMdRegular'
+                    color={theming.textIcon.neutral.secondary}>
+                    Oct 2024 – now
+                  </Text>
+                </LayoutVertical>
+              </LayoutVertical>
+
+              {/* Divider */}
+              <LayoutVertical
+                style={{
+                  width: '1px',
+                  height: '100%',
+                  backgroundColor: theming.stroke.neutral.divider,
+                }}
+              />
+
+              {/* Team */}
+              <LayoutVertical
+                style={{ flex: 1 }}
+                gap='16px'>
+                <Text
+                  variant='figmaSubtitleSmRegular'
+                  color={theming.textIcon.neutral.tertiary}>
+                  Team
+                </Text>
+                <LayoutVertical gap='8px'>
+                  <Text
+                    variant='mainHeadingMd'
+                    color={theming.textIcon.neutral.primary}>
+                    20
+                  </Text>
+                  <Text
+                    variant='mainBodyMdRegular'
+                    color={theming.textIcon.neutral.secondary}
+                    as='ul'
+                    style={{ marginLeft: '21px', padding: 0 }}>
+                    <li>1 Design Manager</li>
+                    <li>4 admins UX Designers</li>
+                    <li>7 ad-hoc UX Designers</li>
+                    <li>8 Engineers</li>
+                  </Text>
+                </LayoutVertical>
+              </LayoutVertical>
+            </LayoutHorizontal>
+          </LayoutVertical>
+        </LayoutVertical>
       </LayoutVertical>
-    </LayoutVertical>
 
-    {/* Content Section */}
-    <LayoutVertical
-      alignSelf='stretch'
-      gap='56px'
-    >
-
-      {/* Summary section */}
+      {/* 02 — Problem Statement */}
       <LayoutVertical
         alignSelf='stretch'
         gap='24px'
-        style={{
-          borderRadius: '12px',
-          backgroundColor: theming.bg.neutral.primary,
-          border: `1px solid ${theming.stroke.neutral.border}`,
-          padding: '40px',
-          maxWidth: 1200
-        }}
-      >
-        <Text variant='figmaSubtitleMdMedium' color={theming.textIcon.neutral.primary}>
-          About this system
+        padding='0px 48px'>
+        <Text
+          variant='figmaSubtitleSmRegular'
+          color={theming.textIcon.neutral.tertiary}>
+          02 — Problem Statement
         </Text>
-        <Text variant='figmaBodyMdRegular' color={theming.textIcon.neutral.secondary} style={{ maxWidth: 800, lineHeight: 1.65 }}>
-          Techcombank DS is a universal design system that powers products used by 15 million+ customers, offering:
-          <ul style={{paddingLeft:24, margin:'16px 0', color:theming.textIcon.neutral.secondary}}>
-            <li>Reusable and accessible UI React components</li>
-            <li>Comprehensive guidelines, tokens, documentation, and templates</li>
-            <li>Alignment of designers and developers across Apps, Web, and Enterprise platforms</li>
-          </ul>
-          <div style={{marginTop:16}}>
-            <span style={{fontWeight:600, color:theming.textIcon.neutral.primary}}>My Role:</span> Led a team of 8, defined system architecture, and established best practices for scalable growth.
-          </div>
+        <Text
+          variant='mainHeadingLg'
+          color={theming.textIcon.neutral.primary}>
+          Fragmented experiences, inconsistent design
         </Text>
-        <LayoutVertical gap='16px' padding='8px 0 0 0' style={{flexWrap:'wrap', flexDirection:'row', display:'flex', alignItems:'center', gap: '32px'}}>
-          <Text variant='figmaCaptionMdRegular' color={theming.textIcon.neutral.tertiary}>
-            <span style={{fontWeight:600, color:theming.textIcon.neutral.primary}}>Year:</span> 2023-24
-          </Text>
-          <Text variant='figmaCaptionMdRegular' color={theming.textIcon.neutral.tertiary}>
-            <span style={{fontWeight:600, color:theming.textIcon.neutral.primary}}>Team:</span> 4 Designers, 4 Engineers
-          </Text>
-          <Text variant='figmaCaptionMdRegular' color={theming.textIcon.neutral.tertiary}>
-            <span style={{fontWeight:600, color:theming.textIcon.neutral.primary}}>Clients:</span> Techcombank, BCG, McKinsey
+
+        {/* Metrics Box */}
+        <LayoutVertical gap='0px' width='100%'>
+          <LayoutVertical
+            alignSelf='stretch'
+            padding='24.5px'
+            style={{
+              borderRadius: '12px',
+              backgroundColor: theming.bg.neutral.secondary,
+              border: `0.5px solid ${theming.stroke.neutral.border}`,
+            }}>
+            <LayoutHorizontal
+              alignSelf='stretch'
+              gap='24px'
+              alignItems='flex-start'>
+              <LayoutVertical style={{ flex: 1 }} gap='8px'>
+                <Text
+                  variant='mainHeadingLg'
+                  color={theming.textIcon.accent.primary}>
+                  05
+                </Text>
+                <Text
+                  variant='mainBodyMdRegular'
+                  color={theming.textIcon.neutral.secondary}>
+                  Techcombank digital platforms, each has a different UI Kit
+                </Text>
+              </LayoutVertical>
+
+              <LayoutVertical
+                style={{
+                  width: '1px',
+                  height: '100%',
+                  backgroundColor: theming.stroke.neutral.divider,
+                }}
+              />
+
+              <LayoutVertical style={{ flex: 1 }} gap='8px'>
+                <Text
+                  variant='mainHeadingLg'
+                  color={theming.textIcon.accent.primary}>
+                  92%
+                </Text>
+                <Text
+                  variant='mainBodyMdRegular'
+                  color={theming.textIcon.neutral.secondary}>
+                  of designers report lack of consistency between features on a same platform
+                </Text>
+              </LayoutVertical>
+
+              <LayoutVertical
+                style={{
+                  width: '1px',
+                  height: '100%',
+                  backgroundColor: theming.stroke.neutral.divider,
+                }}
+              />
+
+              <LayoutVertical style={{ flex: 1 }} gap='8px'>
+                <Text
+                  variant='mainHeadingLg'
+                  color={theming.textIcon.accent.primary}>
+                  53%
+                </Text>
+                <Text
+                  variant='mainBodyMdRegular'
+                  color={theming.textIcon.neutral.secondary}>
+                  of designers & engineers heard about Design Systems but never used one before
+                </Text>
+              </LayoutVertical>
+            </LayoutHorizontal>
+          </LayoutVertical>
+          <Text
+            variant='mainBodySmRegular'
+            color={theming.textIcon.neutral.tertiary}
+            style={{ marginTop: '8px' }}>
+            *Survey results with sample size of 34 designers and engineers
           </Text>
         </LayoutVertical>
+
+        <Text
+          variant='mainBodyMdRegular'
+          color={theming.textIcon.neutral.secondary}>
+          Despite a large design team, each member focuses on unique features within our products, primarily Techcombank (Retail) Mobile Banking and Techcombank Business (mobile and web apps). The inherited Figma components library was just a UI Kit, lacking documentation and guidelines, which led to challenges in design quality and hand-offs. Surveys and interviews confirmed the absence of a unified design system and highlighted key pain points for designers and engineers.
+        </Text>
+
+        {/* Pain Points - Overlapping cards with hover effects */}
+        <PainPointsCards />
       </LayoutVertical>
 
-      {/* Three columns: Stats, My Contribution, Key Impact */}
+      {/* 03 — Approach */}
       <LayoutVertical
         alignSelf='stretch'
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          gap: '40px',
-          flexWrap: 'wrap',
-          maxWidth: 1200,
-        }}
-      >
-        {/* Stats */}
-        <LayoutVertical
-          padding='32px'
-          style={{
-            flex: 1,
-            minWidth: 280,
-            borderRadius: 12,
-            backgroundColor: theming.bg.neutral.secondary,
-            border: `1px solid ${theming.stroke.neutral.border}`,
-            justifyContent: 'flex-start',
-          }}>
-          <Text variant='figmaCaptionMdRegular' color={theming.textIcon.neutral.secondary}>
-            Stats
-          </Text>
-          <LayoutVertical gap='10px' style={{padding:'18px 0 0 0'}}>
-            <Text variant='mainDisplayMd' color={theming.textIcon.neutral.primary}>
-              80+ React Components
-            </Text>
-            <Text variant='mainDisplayMd' color={theming.textIcon.neutral.primary}>
-              1000+ Figma Assets
-            </Text>
-            <Text variant='mainDisplayMd' color={theming.textIcon.neutral.primary}>
-              15M+ End Users
-            </Text>
-            <Text variant='mainDisplayMd' color={theming.textIcon.neutral.primary}>
-              30+ Product Teams
-            </Text>
-            <Text variant='mainDisplayMd' color={theming.textIcon.neutral.primary}>
-              6x Faster Delivery
-            </Text>
-          </LayoutVertical>
-        </LayoutVertical>
+        gap='24px'
+        padding='0px 48px'>
+        <Text
+          variant='figmaSubtitleSmRegular'
+          color={theming.textIcon.neutral.tertiary}>
+          03 — Approach
+        </Text>
+        <Text
+          variant='mainHeadingLg'
+          color={theming.textIcon.neutral.primary}>
+          A system built on atomic principles
+        </Text>
+        <Text
+          variant='mainBodyMdRegular'
+          color={theming.textIcon.neutral.secondary}>
+          We adopted an atomic design methodology, building from the ground up: atoms → molecules → organisms → templates. This approach ensures both scalability and consistency.
+        </Text>
 
-        {/* My Contribution */}
-        <LayoutVertical
-          padding='32px'
-          style={{
-            flex: 2,
-            minWidth: 320,
-            borderRadius: 12,
-            backgroundColor: theming.bg.neutral.secondary,
-            border: `1px solid ${theming.stroke.neutral.border}`,
-            justifyContent: 'flex-start',
-          }}>
-          <Text variant='figmaCaptionMdRegular' color={theming.textIcon.neutral.secondary}>
-            My Contribution
+        <LayoutVertical alignSelf='stretch' gap='8px'>
+          <Text
+            variant='mainBodySmRegular'
+            color={theming.textIcon.neutral.tertiary}>
+            Atomic design explained in Legos
           </Text>
-          <LayoutVertical gap='10px' style={{padding:'18px 0 0 0'}}>
-            <ul style={{ margin: 0, paddingLeft:20, color:theming.textIcon.neutral.primary }}>
-              <li>Established scalable multi-product architecture (web, app, enterprise)</li>
-              <li>Defined coding standards, accessibility, tokens, Figma processes</li>
-              <li>Drove cross-team adoption with education and enablement</li>
-              <li>Collaborated with international consultants and local teams</li>
-              <li>Piloted automated docs and dev–design integration</li>
-            </ul>
-          </LayoutVertical>
-        </LayoutVertical>
+          <LayoutHorizontal
+            alignSelf='stretch'
+            gap='16px'
+            alignItems='flex-start'>
+            {/* Atoms */}
+            <LayoutVertical
+              style={{
+                flex: 1,
+                borderRadius: '12px',
+                border: `1px solid ${theming.stroke.neutral.border}`,
+                overflow: 'hidden',
+              }}>
+              <LayoutVertical
+              height='200px'
+              width='100%'
+              backgroundColor={theming.bg.neutral.secondary}>
+                <img 
+                  src={imgAtoms} 
+                  alt="Atoms" 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }} 
+                />
+              </LayoutVertical>
+              <LayoutVertical padding='16px 12px' gap='4px' style={{minHeight: '140px'}}>
+                <Text
+                  variant='mainHeadingMd'
+                  color={theming.textIcon.neutral.primary}>
+                  Atoms
+                </Text>
+                <Text
+                  variant='mainBodyMdRegular'
+                  color={theming.textIcon.neutral.secondary}>
+                  A single lego bricks, like to an input, a button, etc.
+                </Text>
+              </LayoutVertical>
+            </LayoutVertical>
 
-        {/* Impact */}
-        <LayoutVertical
-          padding='32px'
-          style={{
-            flex: 1.5,
-            minWidth: 280,
-            borderRadius: 12,
-            backgroundColor: theming.bg.neutral.primary,
-            border: `1px solid ${theming.stroke.neutral.border}`,
-            justifyContent: 'flex-start',
-          }}>
-          <Text variant='figmaCaptionMdRegular' color={theming.textIcon.neutral.secondary}>
-            Impact
-          </Text>
-          <LayoutVertical gap='10px' style={{padding:'18px 0 0 0'}}>
-            <ul style={{ margin: 0, paddingLeft:20, color:theming.textIcon.brand.primary }}>
-              <li>Accelerated release cycle from 8+ weeks to 2 weeks</li>
-              <li>Reduced redundancy and bugs in UI codebase</li>
-              <li>Unified product experiences across web and app</li>
-              <li>Empowered non-technical teams with DS resources</li>
-            </ul>
-          </LayoutVertical>
+            {/* Molecules */}
+            <LayoutVertical
+              style={{
+                flex: 1,
+                borderRadius: '12px',
+                border: `1px solid ${theming.stroke.neutral.border}`,
+                overflow: 'hidden',
+              }}>
+              <LayoutVertical
+              height='200px'
+              width='100%'
+              backgroundColor={theming.bg.neutral.secondary}>
+                <img 
+                  src={imgMolecules} 
+                  alt="Molecules" 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }} 
+                />
+              </LayoutVertical>
+              <LayoutVertical padding='16px 12px' gap='4px' style={{minHeight: '140px'}}>
+                <Text
+                  variant='mainHeadingMd'
+                  color={theming.textIcon.neutral.primary}>
+                  Molecules
+                </Text>
+                <Text
+                  variant='mainBodyMdRegular'
+                  color={theming.textIcon.neutral.secondary}>
+                  A functional combination of bricks, like an input field with labels, placeholder, etc.
+                </Text>
+              </LayoutVertical>
+            </LayoutVertical>
+
+            {/* Organisms */}
+            <LayoutVertical
+              style={{
+                flex: 1,
+                borderRadius: '12px',
+                border: `1px solid ${theming.stroke.neutral.border}`,
+                overflow: 'hidden',
+              }}>
+              <LayoutVertical
+              height='200px'
+              width='100%'
+              backgroundColor={theming.bg.neutral.secondary}>
+                <img 
+                  src={imgOrganisms} 
+                  alt="Organisms" 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }} 
+                />
+              </LayoutVertical>
+              <LayoutVertical padding='16px 12px' gap='4px' style={{minHeight: '140px'}}>
+                <Text
+                  variant='mainHeadingMd'
+                  color={theming.textIcon.neutral.primary}>
+                  Organisms
+                </Text>
+                <Text
+                  variant='mainBodyMdRegular'
+                  color={theming.textIcon.neutral.secondary}>
+                  Large, standalone structure, like an input form with multiple inputs and a button
+                </Text>
+              </LayoutVertical>
+            </LayoutVertical>
+
+            {/* Templates */}
+            <LayoutVertical
+              style={{
+                flex: 1,
+                borderRadius: '12px',
+                border: `1px solid ${theming.stroke.neutral.border}`,
+                overflow: 'hidden'
+              }}>
+              <LayoutVertical
+              height='200px'
+              width='100%'
+              backgroundColor={theming.bg.neutral.secondary}>
+                <img 
+                  src={imgTemplates} 
+                  alt="Templates" 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }} 
+                />
+              </LayoutVertical>
+              <LayoutVertical padding='16px 12px' gap='4px' style={{minHeight: '140px'}}>
+                <Text
+                  variant='mainHeadingMd'
+                  color={theming.textIcon.neutral.primary}>
+                  Templates
+                </Text>
+                <Text
+                  variant='mainBodyMdRegular'
+                  color={theming.textIcon.neutral.secondary}>
+                  Layouts/blueprints for a design set, like a complete reusable sign up form
+                </Text>
+              </LayoutVertical>
+            </LayoutVertical>
+          </LayoutHorizontal>
         </LayoutVertical>
       </LayoutVertical>
 
-      {/* Visual Showcase */}
+      {/* Creating the ions */}
       <LayoutVertical
         alignSelf='stretch'
-        gap='18px'
-        padding='32px'
-        style={{
-          borderRadius: '12px',
-          backgroundColor: theming.bg.neutral.secondary,
-          border: `1px solid ${theming.stroke.neutral.border}`,
-          marginTop: 28,
-          maxWidth: 1200,
-        }}
-      >
-        <Text variant='figmaSubtitleMdMedium' color={theming.textIcon.neutral.primary}>
-          Visual Showcase
+        gap='24px'
+        padding='0px 48px'
+        style={{marginBottom: '-156px', zIndex: '-1'}}>
+        <Text
+          variant='mainHeadingLg'
+          color={theming.textIcon.neutral.primary}>
+          Creating the ions
         </Text>
-        <Text variant='figmaCaptionMdRegular' color={theming.textIcon.neutral.secondary} style={{marginBottom: 18}}>
-          Glimpses of cross-platform Figma assets, docs, and live components
+        <Text
+          variant='mainBodyMdRegular'
+          color={theming.textIcon.neutral.secondary}>
+          Ions are a level below atoms, represented as expanding sets of design tokens in a design system. The token structure we established is robust and easy for designers to adopt. After competitor benchmarks and testing, we finalized global and alias tokens that are future-proof, adhering to naming standards while minimizing the learning curve. This allows us to create components using a broader set of tokens without compromising the existing design.
         </Text>
-        <LayoutVertical gap='0' style={{
-          flexDirection: 'row', display: 'flex', flexWrap: 'wrap', gap: '28px'
-        }}>
-          {/* Replace below srcs with real images/assets as available */}
-          <img
-            src='https://res.cloudinary.com/cuongnd97/image/upload/v1718106773/tcb-ds-1.png'
-            alt='Techcombank DS Figma library'
+        <LayoutHorizontal
+          alignSelf='stretch'
+          justifyContent='center'
+          alignItems='flex-end'>
+          <img 
+            src={imgVariables2} 
+            alt="Global tokens table" 
             style={{
-              flex: 1,
-              minWidth: 250, maxWidth: 450,
-              borderRadius: 8,
-              border: `1px solid ${theming.stroke.neutral.border}`,
-              boxShadow: '0 2px 18px rgba(0,0,0,0.06)',
-              background: theming.bg.neutral.primary,
-              objectFit: 'cover'
-            }}
+              width: '420px',
+              objectFit: 'cover',
+              zIndex: 1,
+              transform: 'rotate(-2deg)',
+            }} 
           />
-          <img
-            src='https://res.cloudinary.com/cuongnd97/image/upload/v1718106910/tcb-ds-2.png'
-            alt='Techcombank DS React components'
+          <img 
+            src={imgVariables1} 
+            alt="Alias tokens table" 
             style={{
-              flex: 1,
-              minWidth: 250, maxWidth: 450,
-              borderRadius: 8,
-              border: `1px solid ${theming.stroke.neutral.border}`,
-              boxShadow: '0 2px 18px rgba(0,0,0,0.06)',
-              objectFit: 'cover'
-            }}
+              width: '520px',
+              objectFit: 'cover',
+              transform: 'rotate(2deg)',
+              boxShadow: '0 52px 80px 0 rgba(0, 0, 0, 0.20), 0 21.724px 33.422px 0 rgba(0, 0, 0, 0.15), 0 11.615px 17.869px 0 rgba(0, 0, 0, 0.12), 0 6.511px 10.017px 0 rgba(0, 0, 0, 0.09), 0 3.458px 5.32px 0 rgba(0, 0, 0, 0.06), 0 1.439px 2.214px 0 rgba(0, 0, 0, 0.03)',
+              zIndex: 2,
+              marginLeft: '-20px'
+            }} 
           />
-          <img
-            src='https://res.cloudinary.com/cuongnd97/image/upload/v1718106910/tcb-ds-3.png'
-            alt='Techcombank DS documentation'
-            style={{
-              flex: 1,
-              minWidth: 250, maxWidth: 450,
-              borderRadius: 8,
-              border: `1px solid ${theming.stroke.neutral.border}`,
-              boxShadow: '0 2px 18px rgba(0,0,0,0.06)',
-              objectFit: 'cover'
-            }}
-          />
-        </LayoutVertical>
+        </LayoutHorizontal>
       </LayoutVertical>
-
-      {/* Call To Action */}
-      <LayoutVertical
-        alignSelf='stretch'
-        gap='8px'
-        padding='36px 0 0 0'
-        style={{ alignItems: 'center', maxWidth: 1200 }}
-      >
-        <Text variant='figmaSubtitleMdMedium' color={theming.textIcon.brand.primary}>
-          Interested in large-scale design system work?
-        </Text>
-        <Text variant='figmaBodyMdRegular' color={theming.textIcon.neutral.secondary}>
-          Happy to present or share—reach out for a live demo or expert consult!
-        </Text>
-      </LayoutVertical>
-    </LayoutVertical>
       
+      {/* 04 — A component case study: Button */}
+      <LayoutVertical
+      gap='156px'
+      width='100%'
+      alignSelf='stretch'
+      padding='180px 48px'
+      style={{
+        backgroundColor: theming.bg.page.darker
+      }}>
+        <LayoutVertical
+          alignSelf='stretch'
+          gap='24px'>
+          <Text
+            variant='figmaSubtitleSmRegular'
+            color={theming.textIcon.neutral.tertiary}>
+            04 — A component case study: Button
+          </Text>
+          <Text
+            variant='mainHeadingLg'
+            color={theming.textIcon.neutral.primary}>
+            Constructing a component: <span style={{ color: theming.textIcon.accent.primary }}>Button</span>
+          </Text>
+          <Text
+            variant='mainBodyMdRegular'
+            color={theming.textIcon.neutral.secondary}>
+            To kick off the team's component-building process, I led the creation of the Button component. Here's a guide to constructing design components: Audit the old component, consolidate findings, conduct a landscape study, conceptualize the component, and connect tokens for developer hand-off.
+          </Text>
+        </LayoutVertical>
+
+        {/* Audit */}
+        <LayoutVertical alignSelf='stretch' gap='24px'>
+          <Text
+            variant='mainHeadingMd'
+            color={theming.textIcon.neutral.primary}>
+            Audit
+          </Text>
+          <Text
+            variant='mainBodyMdRegular'
+            color={theming.textIcon.neutral.secondary}>
+            Start by auditing the old component, collecting all instances in current designs. Gather screens representing all variants from mobile and web platforms across Techcombank's three domains: Retail Digital Banking (RDB), Corporate Digital Banking (CDB), and the public web. The goal is to create a single source of truth for reusable design components across all platforms.
+          </Text>
+          <LayoutVertical alignSelf='stretch' gap='8px'>
+            <Text
+              variant='mainBodySmRegular'
+              color={theming.textIcon.neutral.tertiary}>
+              Example of a pile-of-mess audit (it's ok)
+            </Text>
+            <img 
+              src={imgAudit} 
+              alt="Audit example" 
+              style={{
+                width: '100%',
+                height: '600px',
+                objectFit: 'cover',
+                borderRadius: '12px',
+              }} 
+            />
+          </LayoutVertical>
+        </LayoutVertical>
+
+        {/* Consolidate */}
+        <LayoutHorizontal alignSelf='stretch' gap='24px' alignItems='flex-start'>
+          <LayoutVertical style={{ flex: 1 }} gap='24px'>
+            <Text
+              variant='mainHeadingMd'
+              color={theming.textIcon.neutral.primary}>
+              Consolidate
+            </Text>
+            <Text
+              variant='mainBodyMdRegular'
+              color={theming.textIcon.neutral.secondary}>
+              List all styles the component includes, along with any child components. This overview helps designers understand the component's current state before reconstruction. A styling table can assist in quickly grasping the component's status and providing informed feedback during revisions.
+            </Text>
+          </LayoutVertical>
+          <LayoutVertical
+            style={{
+              flex: 1,
+              borderRadius: '12px',
+              backgroundColor: theming.bg.neutral.secondary,
+              border: `1px solid ${theming.stroke.neutral.border}`,
+              overflow: 'hidden',
+              height: '400px',
+            }}>
+            <img 
+              src={imgConsolidate} 
+              alt="Consolidate" 
+              style={{
+                width: '200%',
+                objectFit: 'cover',
+                left: '10%',
+                top: '10%',
+                position: 'relative'
+              }} 
+            />
+          </LayoutVertical>
+        </LayoutHorizontal>
+
+        {/* Landscape study */}
+        <LayoutVertical alignSelf='stretch' gap='24px'>
+          <Text
+            variant='mainHeadingMd'
+            color={theming.textIcon.neutral.primary}>
+            Landscape study
+          </Text>
+          <Text
+            variant='mainBodyMdRegular'
+            color={theming.textIcon.neutral.secondary}>
+            Gather design components, UI behaviors, and guidelines from established design systems, focusing on finance-specific ones. This research helps understand common patterns and best practices for Techcombank. Analyze how other systems construct components in Figma, noting framing, style variations, and programming constraints.
+          </Text>
+          <LayoutVertical
+            alignSelf='stretch'
+            height='300px'
+            style={{
+              borderRadius: '12px',
+              backgroundColor: theming.bg.neutral.secondary,
+              border: `1px solid ${theming.stroke.neutral.border}`,
+              overflow: 'hidden',
+            }}>
+            <img 
+              src={imgLandscape} 
+              alt="Landscape study" 
+              style={{
+                height: '120%',
+                objectFit: 'cover',
+                position: 'relative',
+                left: '2%',
+                top: '10%',
+              }} 
+            />
+          </LayoutVertical>
+        </LayoutVertical>
+
+        {/* Component concept */}
+        <LayoutVertical alignSelf='stretch' gap='24px'>
+          <Text
+            variant='mainHeadingMd'
+            color={theming.textIcon.neutral.primary}>
+            Component concept
+          </Text>
+          <Text
+            variant='mainBodyMdRegular'
+            color={theming.textIcon.neutral.secondary}>
+            In the initial draft, identify all states and variations of the component. Note key changes from the old version and differences between web and app versions. Use data from the landscape study to support design choices. Prepare mockups to visualize the new component, comparing old and new screens side by side. The design may go through several iterations before finalization, including micro-interactions and accessibility checks.
+          </Text>
+          <LayoutVertical
+            alignSelf='stretch'
+            style={{
+              height: '200px',
+              borderRadius: '12px',
+              backgroundColor: '#ffffff',
+              border: `1px solid ${theming.stroke.neutral.border}`,
+              overflow: 'hidden',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            {/* Button example */}
+            <LayoutHorizontal gap='16px' alignItems='center'>
+              <LayoutVertical
+                padding='0 24px'
+                style={{
+                  height: '40px',
+                  minWidth: '156px',
+                  borderRadius: '960px',
+                  backgroundColor: 'rgba(255,255,255,0.01)',
+                  border: `1px solid #404040`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Text
+                  variant='figmaBodyMdEmphasize'
+                  color='#1a1a1a'>
+                  Reject
+                </Text>
+              </LayoutVertical>
+              <LayoutVertical
+                padding='0 24px'
+                style={{
+                  height: '40px',
+                  minWidth: '156px',
+                  borderRadius: '960px',
+                  backgroundColor: '#000000',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Text
+                  variant='figmaBodyMdEmphasize'
+                  color='#ffffff'>
+                  Approve
+                </Text>
+              </LayoutVertical>
+            </LayoutHorizontal>
+          </LayoutVertical>
+        </LayoutVertical>
+
+        {/* Tokenization and Hand-off */}
+        <LayoutHorizontal alignSelf='stretch' gap='24px' alignItems='flex-start'>
+          <LayoutVertical style={{ flex: 1 }} gap='24px'>
+            <Text
+              variant='mainHeadingMd'
+              color={theming.textIcon.neutral.primary}>
+              Tokenization and Hand-off
+            </Text>
+            <Text
+              variant='mainBodyMdRegular'
+              color={theming.textIcon.neutral.secondary}>
+              The final step is to create component-specific tokens and map them accordingly. This gives designers more control over component properties, ensuring they are future-proof and easily modifiable. Detailed specifications can streamline processes for developers and testers.
+            </Text>
+          </LayoutVertical>
+          <LayoutVertical
+          height='200px'
+            style={{
+              flex: 1,
+              borderRadius: '12px',
+              backgroundColor: theming.bg.neutral.secondary,
+              border: `1px solid ${theming.stroke.neutral.border}`,
+              overflow: 'hidden',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+            <img 
+              src={imgSpec} 
+              alt="Tokenization" 
+              style={{
+                width: '80%',
+                objectFit: 'cover',
+                position: 'relative'
+              }} 
+            />
+          </LayoutVertical>
+        </LayoutHorizontal>
+
+        {/* Documentation */}
+        <LayoutVertical alignSelf='stretch' gap='24px'>
+          <Text
+            variant='mainHeadingMd'
+            color={theming.textIcon.neutral.primary}>
+            Documentation
+          </Text>
+          <Text
+            variant='mainBodyMdRegular'
+            color={theming.textIcon.neutral.secondary}>
+            A component UI alone doesn't complete a design system. It's crucial to communicate the various styles and states of buttons, their usage guidelines, and best practices to ensure consistent use across the platform, reinforcing brand identity and enhancing user experience.
+          </Text>
+
+          {/* Documentation examples */}
+          <LayoutVertical alignSelf='stretch' gap='8px'>
+            <Text
+              variant='mainBodySmRegular'
+              color={theming.textIcon.neutral.tertiary}>
+              Only use one primary button on a page
+            </Text>
+            <LayoutVertical
+              alignSelf='stretch'
+              height='400px'
+              alignItems='center'
+              justifyContent='center'
+              style={{
+                borderRadius: '12px',
+                backgroundColor: theming.bg.neutral.secondary,
+                border: `1px solid ${theming.stroke.neutral.border}`,
+                overflow: 'hidden',
+              }}>
+              <img 
+                src={imgDoc1} 
+                alt="Documentation example 1" 
+                style={{
+                  width: '70%',
+                  objectFit: 'cover',
+                }} 
+              />
+            </LayoutVertical>
+          </LayoutVertical>
+
+          <LayoutHorizontal alignSelf='stretch' gap='24px' alignItems='flex-start'>
+            <LayoutVertical style={{ flex: 1 }} gap='8px'>
+              <Text
+                variant='mainBodySmRegular'
+                color={theming.textIcon.neutral.tertiary}>
+                Secondary buttons pairing
+              </Text>
+              <LayoutVertical
+                alignSelf='stretch'
+                style={{
+                  height: '400px',
+                  borderRadius: '12px',
+                  backgroundColor: theming.bg.neutral.secondary,
+                  border: `1px solid ${theming.stroke.neutral.border}`,
+                  overflow: 'hidden',
+                }}>
+                <img 
+                  src={imgDoc2} 
+                  alt="Documentation example 2" 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }} 
+                />
+              </LayoutVertical>
+            </LayoutVertical>
+            <LayoutVertical style={{ flex: 1 }} gap='8px'>
+              <Text
+                variant='mainBodySmRegular'
+                color={theming.textIcon.neutral.tertiary}>
+                Use tertiary button as dismissive action
+              </Text>
+              <LayoutVertical
+                alignSelf='stretch'
+                style={{
+                  height: '400px',
+                  borderRadius: '12px',
+                  backgroundColor: theming.bg.neutral.secondary,
+                  border: `1px solid ${theming.stroke.neutral.border}`,
+                  overflow: 'hidden',
+                }}>
+                <img 
+                  src={imgDoc3} 
+                  alt="Documentation example 3" 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }} 
+                />
+              </LayoutVertical>
+            </LayoutVertical>
+          </LayoutHorizontal>
+
+          <LayoutVertical alignSelf='stretch' gap='8px'>
+            <Text
+              variant='mainBodySmRegular'
+              color={theming.textIcon.neutral.tertiary}>
+              Try not to use buttons for navigation
+            </Text>
+            <LayoutVertical
+              alignSelf='stretch'
+              style={{
+                height: '400px',
+                borderRadius: '12px',
+                backgroundColor: theming.bg.neutral.secondary,
+                border: `1px solid ${theming.stroke.neutral.border}`,
+                overflow: 'hidden',
+              }}>
+              <img 
+                src={imgDoc4} 
+                alt="Documentation example 4" 
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                }} 
+              />
+            </LayoutVertical>
+          </LayoutVertical>
+        </LayoutVertical>
+      </LayoutVertical>
+
+      {/* 05 — Outcome */}
+      <LayoutVertical
+        alignSelf='stretch'
+        gap='24px'
+        padding='0px 48px'>
+        <Text
+          variant='figmaSubtitleSmRegular'
+          color={theming.textIcon.neutral.tertiary}>
+          05 — Outcome
+        </Text>
+        <Text
+          variant='mainHeadingLg'
+          color={theming.textIcon.neutral.primary}>
+          Measurable efficiency gains
+        </Text>
+
+        {/* Metrics Box */}
+        <LayoutVertical
+          alignSelf='stretch'
+          padding='24.5px'
+          style={{
+            borderRadius: '12px',
+            backgroundColor: theming.bg.neutral.secondary,
+            border: `0.5px solid ${theming.stroke.neutral.border}`,
+          }}>
+          <LayoutHorizontal
+            alignSelf='stretch'
+            gap='24px'
+            alignItems='flex-start'>
+            <LayoutVertical style={{ flex: 1 }} gap='8px'>
+              <Text
+                variant='mainHeadingLg'
+                color={theming.textIcon.accent.primary}>
+                86%
+              </Text>
+              <Text
+                variant='mainBodyMdRegular'
+                color={theming.textIcon.neutral.secondary}>
+                Product teams adopted new design system within 2 months
+              </Text>
+            </LayoutVertical>
+
+            <LayoutVertical
+              style={{
+                width: '1px',
+                height: '100%',
+                backgroundColor: theming.stroke.neutral.divider,
+              }}
+            />
+
+            <LayoutVertical style={{ flex: 1 }} gap='8px'>
+              <Text
+                variant='mainHeadingLg'
+                color={theming.textIcon.accent.primary}>
+                100%
+              </Text>
+              <Text
+                variant='mainBodyMdRegular'
+                color={theming.textIcon.neutral.secondary}>
+                of new designs using system components
+              </Text>
+            </LayoutVertical>
+          </LayoutHorizontal>
+        </LayoutVertical>
+
+        <Text
+          variant='mainBodyMdRegular'
+          color={theming.textIcon.neutral.secondary}>
+          The design system has become the foundation for all digital products at Techcombank. It's maintained by a dedicated team with quarterly releases, comprehensive documentation, and a governance model that ensures quality and consistency.
+        </Text>
+        <Text
+          variant='mainBodyMdRegular'
+          color={theming.textIcon.neutral.secondary}>
+          Beyond efficiency, it has elevated the overall quality of our digital experiences, creating a cohesive brand presence across all touch-points.
+        </Text>
+      </LayoutVertical>
     </LayoutVertical>
   );
 };
