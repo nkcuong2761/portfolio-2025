@@ -38,7 +38,7 @@ const FloatingButton = styled.button<FloatingButtonProps>`
   transition-delay: ${(p) => p.isCollapsed ? '200ms' : '0ms'};
 
   &:hover {
-    background-color: ${(p) => themes[p.currentTheme].bg.neutral.secondaryHover};
+    background-color: ${(p) => themes[p.currentTheme].bg.neutral.tertiary};
     transform: ${(p) => p.isCollapsed ? 'scale(1.05)' : 'scale(0.8)'};
   }
 

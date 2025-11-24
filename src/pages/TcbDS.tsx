@@ -17,7 +17,7 @@ const imgVariables2 = "https://i.postimg.cc/ryZ2qGx7/variable_2.png";
 const imgAudit = "https://i.postimg.cc/w648dQzW/audit.jpg";
 const imgConsolidate = "https://i.postimg.cc/csLyj5pC/consolidate.png";
 const imgLandscape = "https://i.postimg.cc/J1zVgdfs/landscape.png";
-const imgSpec = "https://i.postimg.cc/VLSQvSW3/spec.png";
+const imgSpec = "https://i.postimg.cc/VkQsRXf6/spec.png";
 const imgDoc1 = "https://i.postimg.cc/csLyj5V9/doc-1.png";
 const imgDoc2 = "https://i.postimg.cc/p2Lb71g7/doc-2.png";
 const imgDoc3 = "https://i.postimg.cc/MWp24rhN/doc-3.png";
@@ -540,7 +540,7 @@ export const TcbDS: React.FC = () => {
         alignSelf='stretch'
         gap='24px'
         padding='0px 48px'
-        style={{marginBottom: '-156px', zIndex: '-1'}}>
+        style={{marginBottom: '-180px', zIndex: '-1'}}>
         <Text
           variant='mainHeadingLg'
           color={theming.textIcon.neutral.primary}>
@@ -582,13 +582,13 @@ export const TcbDS: React.FC = () => {
       
       {/* 04 — A component case study: Button */}
       <LayoutVertical
-      gap='156px'
-      width='100%'
-      alignSelf='stretch'
-      padding='180px 48px'
-      style={{
-        backgroundColor: theming.bg.page.darker
-      }}>
+        gap='156px'
+        width='100%'
+        alignSelf='stretch'
+        padding='180px 48px'
+        style={{
+          backgroundColor: theming.bg.page.darker
+        }}>
         <LayoutVertical
           alignSelf='stretch'
           gap='24px'>
@@ -691,7 +691,9 @@ export const TcbDS: React.FC = () => {
           </Text>
           <LayoutVertical
             alignSelf='stretch'
-            height='300px'
+            height='250px'
+            justifyContent='flex-end'
+            alignItems='center'
             style={{
               borderRadius: '12px',
               backgroundColor: theming.bg.neutral.secondary,
@@ -702,11 +704,10 @@ export const TcbDS: React.FC = () => {
               src={imgLandscape} 
               alt="Landscape study" 
               style={{
-                height: '120%',
+                height: '100%',
                 objectFit: 'cover',
                 position: 'relative',
-                left: '2%',
-                top: '10%',
+                bottom: '-15%',
               }} 
             />
           </LayoutVertical>
@@ -849,93 +850,101 @@ export const TcbDS: React.FC = () => {
                 src={imgDoc1} 
                 alt="Documentation example 1" 
                 style={{
-                  width: '70%',
+                  height: '90%',
                   objectFit: 'cover',
-                }} 
+                  position: 'relative'
+                }}
               />
             </LayoutVertical>
           </LayoutVertical>
+        </LayoutVertical>
 
-          <LayoutHorizontal alignSelf='stretch' gap='24px' alignItems='flex-start'>
-            <LayoutVertical style={{ flex: 1 }} gap='8px'>
-              <Text
-                variant='mainBodySmRegular'
-                color={theming.textIcon.neutral.tertiary}>
-                Secondary buttons pairing
-              </Text>
-              <LayoutVertical
-                alignSelf='stretch'
-                style={{
-                  height: '400px',
-                  borderRadius: '12px',
-                  backgroundColor: theming.bg.neutral.secondary,
-                  border: `1px solid ${theming.stroke.neutral.border}`,
-                  overflow: 'hidden',
-                }}>
-                <img 
-                  src={imgDoc2} 
-                  alt="Documentation example 2" 
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                  }} 
-                />
-              </LayoutVertical>
-            </LayoutVertical>
-            <LayoutVertical style={{ flex: 1 }} gap='8px'>
-              <Text
-                variant='mainBodySmRegular'
-                color={theming.textIcon.neutral.tertiary}>
-                Use tertiary button as dismissive action
-              </Text>
-              <LayoutVertical
-                alignSelf='stretch'
-                style={{
-                  height: '400px',
-                  borderRadius: '12px',
-                  backgroundColor: theming.bg.neutral.secondary,
-                  border: `1px solid ${theming.stroke.neutral.border}`,
-                  overflow: 'hidden',
-                }}>
-                <img 
-                  src={imgDoc3} 
-                  alt="Documentation example 3" 
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                  }} 
-                />
-              </LayoutVertical>
-            </LayoutVertical>
-          </LayoutHorizontal>
-
-          <LayoutVertical alignSelf='stretch' gap='8px'>
+        <LayoutHorizontal alignSelf='stretch' gap='48px' alignItems='flex-start'>
+          <LayoutVertical style={{ flex: 1 }} gap='8px'>
             <Text
               variant='mainBodySmRegular'
               color={theming.textIcon.neutral.tertiary}>
-              Try not to use buttons for navigation
+              Secondary buttons pairing
             </Text>
             <LayoutVertical
               alignSelf='stretch'
+              height='400px'
+              alignItems='center'
+              justifyContent='flex-end'
               style={{
-                height: '400px',
                 borderRadius: '12px',
                 backgroundColor: theming.bg.neutral.secondary,
                 border: `1px solid ${theming.stroke.neutral.border}`,
                 overflow: 'hidden',
               }}>
               <img 
-                src={imgDoc4} 
-                alt="Documentation example 4" 
+                src={imgDoc2} 
+                alt="Documentation example 2" 
                 style={{
-                  width: '100%',
-                  height: '100%',
+                  width: '40%',
                   objectFit: 'cover',
+                  position: 'relative',
+                  bottom: '20%'
                 }} 
               />
             </LayoutVertical>
+          </LayoutVertical>
+          <LayoutVertical style={{ flex: 1 }} gap='8px' padding='240px 0 0 0'>
+            <Text
+              variant='mainBodySmRegular'
+              color={theming.textIcon.neutral.tertiary}>
+              Use tertiary button as dismissive action
+            </Text>
+            <LayoutVertical
+              alignSelf='stretch'
+              height='400px'
+              alignItems='center'
+              justifyContent='center'
+              style={{
+                borderRadius: '12px',
+                backgroundColor: theming.bg.neutral.secondary,
+                border: `1px solid ${theming.stroke.neutral.border}`,
+                overflow: 'hidden',
+              }}>
+              <img 
+                src={imgDoc3} 
+                alt="Documentation example 3" 
+                style={{
+                  height: '90%',
+                  objectFit: 'cover',
+                  position: 'relative'
+                }} 
+              />
+            </LayoutVertical>
+          </LayoutVertical>
+        </LayoutHorizontal>
+
+        <LayoutVertical alignSelf='stretch' gap='8px'>
+          <Text
+            variant='mainBodySmRegular'
+            color={theming.textIcon.neutral.tertiary}>
+            Try not to use buttons for navigation
+          </Text>
+          <LayoutVertical
+            alignSelf='stretch'
+            height='400px'
+            alignItems='center'
+            justifyContent='center'
+            style={{
+              borderRadius: '12px',
+              backgroundColor: theming.bg.neutral.secondary,
+              border: `1px solid ${theming.stroke.neutral.border}`,
+              overflow: 'hidden',
+            }}>
+            <img 
+              src={imgDoc4} 
+              alt="Documentation example 4" 
+              style={{
+                width: '90%',
+                objectFit: 'cover',
+                position: 'relative'
+              }}
+            />
           </LayoutVertical>
         </LayoutVertical>
       </LayoutVertical>
