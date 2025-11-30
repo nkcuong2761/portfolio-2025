@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { themes } from '../assets/colors/alias.ts';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 import { useCollapse } from '../contexts/CollapseContext.tsx';
@@ -6,8 +6,11 @@ import { LayoutVertical } from '../components/LayoutVertical.tsx';
 import { LayoutHorizontal } from '../components/LayoutHorizontal.tsx';
 import { Text } from '../Text.tsx';
 import { TextCard } from '../components/TextCard.tsx';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Image URLs from Figma
+import gifHero from "../assets/images/tcbds.gif";
 const imgAtoms = "https://i.postimg.cc/fWqQM7Yz/atoms.png";
 const imgMolecules = "https://i.postimg.cc/WpYcsm02/molecules.png";
 const imgOrganisms = "https://i.postimg.cc/BZ7fJ52Z/organisms.png";
@@ -73,28 +76,88 @@ export const TcbDS: React.FC = () => {
   const { theme } = useTheme();
   const theming = themes[theme];
   const { isCollapsed } = useCollapse();
+  const pageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!pageRef.current) return;
+    const scroller = pageRef.current;
+    const ctx = gsap.context(() => {
+      const blocks = gsap.utils.toArray<HTMLElement>('[data-animate-block]');
+      blocks.forEach((block, index) => {
+        gsap.fromTo(
+          block,
+          { autoAlpha: 0, y: 48, scale: 0.98 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.9,
+            ease: 'power3.out',
+            delay: Math.min(index * 0.05, 0.4),
+            scrollTrigger: {
+              trigger: block,
+              scroller,
+              start: 'top 85%',
+              end: 'top 35%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      });
+
+      const highlights = gsap.utils.toArray<HTMLElement>('[data-animate-highlight]');
+      highlights.forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0.3, textShadow: '0px 0px 0px rgba(0,0,0,0)' },
+          {
+            opacity: 1,
+            textShadow: `0px 20px 40px ${theming.bg.neutral.hover}`,
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              scroller,
+              start: 'top 90%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      });
+    }, pageRef);
+
+    return () => ctx.revert();
+  }, [theming]);
 
   return (
-    <LayoutVertical
-      width='100%'
-      height='100vh'
-      padding='156px 0px'
-      gap='156px'
-      alignItems='flex-start'
-      alignSelf='stretch'
+    <div
+      ref={pageRef}
+      className='page-scroll'
       style={{
         flex: 1,
-        zIndex: 0,
-        overflow: 'auto',
+        width: '100%',
+        height: '100%',
+        overflowY: 'auto',
         marginRight: isCollapsed ? '0px' : '224px',
-        transition: 'margin-right 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94)', /* ease-out */
-      }}
-    >
+        transition: 'margin-right 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+      }}>
+      <LayoutVertical
+        width='100%'
+        padding='156px 0px'
+        gap='156px'
+        alignItems='flex-start'
+        alignSelf='stretch'
+        style={{ minHeight: '100%' }}
+      >
       {/* 01 — Project Overview */}
       <LayoutVertical
         alignSelf='stretch'
         gap='36px'
-        padding='0px 48px'>
+        padding='0px 48px'
+        data-animate-block>
         <LayoutVertical
           alignSelf='stretch'
           gap='24px'>
@@ -116,18 +179,16 @@ export const TcbDS: React.FC = () => {
         </LayoutVertical>
         
         {/* Hero Image */}
-        <LayoutVertical
-          alignSelf='stretch'
+        <img
+          src={gifHero}
           style={{
+            alignSelf: 'stretch',
+            position: 'relative',
             height: '400px',
             borderRadius: '12px',
-            backgroundColor: theming.bg.neutral.secondary,
             border: `0.5px solid ${theming.stroke.neutral.border}`,
-            overflow: 'hidden',
-            position: 'relative',
-          }}>
-          {/* TODO: Add hero image */}
-        </LayoutVertical>
+            overflow: 'hidden'
+        }}/>
 
         {/* Building a foundation section */}
         <LayoutVertical
@@ -257,7 +318,8 @@ export const TcbDS: React.FC = () => {
       <LayoutVertical
         alignSelf='stretch'
         gap='24px'
-        padding='0px 48px'>
+        padding='0px 48px'
+        data-animate-block>
         <Text
           variant='figmaSubtitleSmRegular'
           color={theming.textIcon.neutral.tertiary}>
@@ -286,7 +348,8 @@ export const TcbDS: React.FC = () => {
               <LayoutVertical style={{ flex: 1 }} gap='8px'>
                 <Text
                   variant='mainHeadingLg'
-                  color={theming.textIcon.accent.primary}>
+                  color={theming.textIcon.accent.primary}
+                  data-animate-highlight>
                   05
                 </Text>
                 <Text
@@ -307,7 +370,8 @@ export const TcbDS: React.FC = () => {
               <LayoutVertical style={{ flex: 1 }} gap='8px'>
                 <Text
                   variant='mainHeadingLg'
-                  color={theming.textIcon.accent.primary}>
+                  color={theming.textIcon.accent.primary}
+                  data-animate-highlight>
                   92%
                 </Text>
                 <Text
@@ -328,7 +392,8 @@ export const TcbDS: React.FC = () => {
               <LayoutVertical style={{ flex: 1 }} gap='8px'>
                 <Text
                   variant='mainHeadingLg'
-                  color={theming.textIcon.accent.primary}>
+                  color={theming.textIcon.accent.primary}
+                  data-animate-highlight>
                   53%
                 </Text>
                 <Text
@@ -361,7 +426,8 @@ export const TcbDS: React.FC = () => {
       <LayoutVertical
         alignSelf='stretch'
         gap='24px'
-        padding='0px 48px'>
+        padding='0px 48px'
+        data-animate-block>
         <Text
           variant='figmaSubtitleSmRegular'
           color={theming.textIcon.neutral.tertiary}>
@@ -540,6 +606,7 @@ export const TcbDS: React.FC = () => {
         alignSelf='stretch'
         gap='24px'
         padding='0px 48px'
+        data-animate-block
         style={{marginBottom: '-180px', zIndex: '-1'}}>
         <Text
           variant='mainHeadingLg'
@@ -586,12 +653,14 @@ export const TcbDS: React.FC = () => {
         width='100%'
         alignSelf='stretch'
         padding='180px 48px'
+        data-animate-block
         style={{
           backgroundColor: theming.bg.page.darker
         }}>
         <LayoutVertical
           alignSelf='stretch'
-          gap='24px'>
+          gap='24px'
+          data-animate-block>
           <Text
             variant='figmaSubtitleSmRegular'
             color={theming.textIcon.neutral.tertiary}>
@@ -610,7 +679,7 @@ export const TcbDS: React.FC = () => {
         </LayoutVertical>
 
         {/* Audit */}
-        <LayoutVertical alignSelf='stretch' gap='24px'>
+        <LayoutVertical alignSelf='stretch' gap='24px' data-animate-block>
           <Text
             variant='mainHeadingMd'
             color={theming.textIcon.neutral.primary}>
@@ -641,7 +710,7 @@ export const TcbDS: React.FC = () => {
         </LayoutVertical>
 
         {/* Consolidate */}
-        <LayoutHorizontal alignSelf='stretch' gap='24px' alignItems='flex-start'>
+        <LayoutHorizontal alignSelf='stretch' gap='24px' alignItems='flex-start' data-animate-block>
           <LayoutVertical style={{ flex: 1 }} gap='24px'>
             <Text
               variant='mainHeadingMd'
@@ -678,7 +747,7 @@ export const TcbDS: React.FC = () => {
         </LayoutHorizontal>
 
         {/* Landscape study */}
-        <LayoutVertical alignSelf='stretch' gap='24px'>
+        <LayoutVertical alignSelf='stretch' gap='24px' data-animate-block>
           <Text
             variant='mainHeadingMd'
             color={theming.textIcon.neutral.primary}>
@@ -687,7 +756,7 @@ export const TcbDS: React.FC = () => {
           <Text
             variant='mainBodyMdRegular'
             color={theming.textIcon.neutral.secondary}>
-            Gather design components, UI behaviors, and guidelines from established design systems, focusing on finance-specific ones. This research helps understand common patterns and best practices for Techcombank. Analyze how other systems construct components in Figma, noting framing, style variations, and programming constraints.
+            Gather design components, UI behaviors, and guidelines from established design systems (it's recommended to include at least one fin-tech product). This research helps understand common patterns and best practices for Techcombank. Analyze how other systems construct components in Figma, noting framing, style variations, and programming constraints.
           </Text>
           <LayoutVertical
             alignSelf='stretch'
@@ -714,7 +783,7 @@ export const TcbDS: React.FC = () => {
         </LayoutVertical>
 
         {/* Component concept */}
-        <LayoutVertical alignSelf='stretch' gap='24px'>
+        <LayoutVertical alignSelf='stretch' gap='24px' data-animate-block>
           <Text
             variant='mainHeadingMd'
             color={theming.textIcon.neutral.primary}>
@@ -779,7 +848,7 @@ export const TcbDS: React.FC = () => {
         </LayoutVertical>
 
         {/* Tokenization and Hand-off */}
-        <LayoutHorizontal alignSelf='stretch' gap='24px' alignItems='flex-start'>
+        <LayoutHorizontal alignSelf='stretch' gap='24px' alignItems='flex-start' data-animate-block>
           <LayoutVertical style={{ flex: 1 }} gap='24px'>
             <Text
               variant='mainHeadingMd'
@@ -816,7 +885,7 @@ export const TcbDS: React.FC = () => {
         </LayoutHorizontal>
 
         {/* Documentation */}
-        <LayoutVertical alignSelf='stretch' gap='24px'>
+        <LayoutVertical alignSelf='stretch' gap='24px' data-animate-block>
           <Text
             variant='mainHeadingMd'
             color={theming.textIcon.neutral.primary}>
@@ -860,7 +929,7 @@ export const TcbDS: React.FC = () => {
         </LayoutVertical>
 
         <LayoutHorizontal alignSelf='stretch' gap='48px' alignItems='flex-start'>
-          <LayoutVertical style={{ flex: 1 }} gap='8px'>
+          <LayoutVertical style={{ flex: 1 }} gap='8px' data-animate-block>
             <Text
               variant='mainBodySmRegular'
               color={theming.textIcon.neutral.tertiary}>
@@ -889,7 +958,7 @@ export const TcbDS: React.FC = () => {
               />
             </LayoutVertical>
           </LayoutVertical>
-          <LayoutVertical style={{ flex: 1 }} gap='8px' padding='240px 0 0 0'>
+          <LayoutVertical style={{ flex: 1, marginTop: 240 }} gap='8px' data-animate-block>
             <Text
               variant='mainBodySmRegular'
               color={theming.textIcon.neutral.tertiary}>
@@ -919,7 +988,7 @@ export const TcbDS: React.FC = () => {
           </LayoutVertical>
         </LayoutHorizontal>
 
-        <LayoutVertical alignSelf='stretch' gap='8px'>
+        <LayoutVertical alignSelf='stretch' gap='8px' data-animate-block>
           <Text
             variant='mainBodySmRegular'
             color={theming.textIcon.neutral.tertiary}>
@@ -953,7 +1022,8 @@ export const TcbDS: React.FC = () => {
       <LayoutVertical
         alignSelf='stretch'
         gap='24px'
-        padding='0px 48px'>
+        padding='0px 48px'
+        data-animate-block>
         <Text
           variant='figmaSubtitleSmRegular'
           color={theming.textIcon.neutral.tertiary}>
@@ -981,7 +1051,8 @@ export const TcbDS: React.FC = () => {
             <LayoutVertical style={{ flex: 1 }} gap='8px'>
               <Text
                 variant='mainHeadingLg'
-                color={theming.textIcon.accent.primary}>
+                color={theming.textIcon.accent.primary}
+                data-animate-highlight>
                 86%
               </Text>
               <Text
@@ -1002,7 +1073,8 @@ export const TcbDS: React.FC = () => {
             <LayoutVertical style={{ flex: 1 }} gap='8px'>
               <Text
                 variant='mainHeadingLg'
-                color={theming.textIcon.accent.primary}>
+                color={theming.textIcon.accent.primary}
+                data-animate-highlight>
                 100%
               </Text>
               <Text
@@ -1025,6 +1097,7 @@ export const TcbDS: React.FC = () => {
           Beyond efficiency, it has elevated the overall quality of our digital experiences, creating a cohesive brand presence across all touch-points.
         </Text>
       </LayoutVertical>
-    </LayoutVertical>
+      </LayoutVertical>
+    </div>
   );
 };

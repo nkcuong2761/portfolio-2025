@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface LayoutProps {
+interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
   alignItems?: string;
   gap?: string;
   padding?: string;
@@ -39,7 +39,8 @@ export const LayoutHorizontal: React.FC<LayoutProps> = ({
   justifyContent,
   style,
   children,
-  onClick
+  onClick,
+  ...rest
 }) => {
   return (
   <Horizontal
@@ -52,7 +53,8 @@ export const LayoutHorizontal: React.FC<LayoutProps> = ({
     alignSelf={alignSelf}
     justifyContent={justifyContent}
     style={style}
-    onClick={onClick}>
+    onClick={onClick}
+    {...rest}>
     {children}
   </Horizontal>
 )}

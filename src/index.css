@@ -31,6 +31,26 @@ html, body {
   -ms-overflow-style: none;
 }
 
+.page-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(253, 253, 253, 0.4) transparent;
+  -ms-overflow-style: auto;
+}
+
+.page-scroll::-webkit-scrollbar {
+  display: initial;
+  width: 6px;
+}
+
+.page-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.page-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(253, 253, 253, 0.4);
+  border-radius: 8px;
+}
+
 #root {
   height: 100%;
 }
