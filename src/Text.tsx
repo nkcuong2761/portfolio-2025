@@ -1,7 +1,7 @@
 import React from 'react';
 import { typography } from './assets/typography/typo.ts';
 
-type TypographyVariant = 
+type TypographyVariant =
   | 'mainDisplayLg'
   | 'mainDisplayMdRegular'
   | 'mainDisplayMdEmphasize'
@@ -11,13 +11,14 @@ type TypographyVariant =
   | 'mainBodyMdRegular'
   | 'mainBodyMdEmphasize'
   | 'mainBodySmRegular'
-  | 'figmaBodyMdRegular' 
+  | 'mainBodySmEmphasize'
+  | 'figmaBodyMdRegular'
   | 'figmaBodyMdEmphasize'
-  | 'figmaBodySmRegular' 
+  | 'figmaBodySmRegular'
   | 'figmaBodySmMedium'
   | 'figmaBodySmEmphasize'
   | 'figmaSubtitleSmRegular'
-  | 'figmaSubtitleSmMedium' 
+  | 'figmaSubtitleSmMedium'
   | 'figmaSubtitleSmEmphasize'
   | 'figmaSubtitleXsRegular';
 
@@ -39,7 +40,8 @@ const getTypographyStyle = (variant: TypographyVariant) => {
     mainBodyLg: typography.main.body.lg,
     mainBodyMdRegular: typography.main.body.md.regular,
     mainBodyMdEmphasize: typography.main.body.md.emphasize,
-    mainBodySmRegular: typography.main.body.sm,
+    mainBodySmRegular: typography.main.body.sm.regular,
+    mainBodySmEmphasize: typography.main.body.sm.emphasize,
     // Figma variants
     figmaBodyMdRegular: typography.figma.body.md.regular,
     figmaBodyMdEmphasize: typography.figma.body.md.emphasize,
@@ -67,7 +69,7 @@ const getFontFamily = (variant: TypographyVariant): string => {
 
 export const Text: React.FC<TextProps> = ({ variant, as = 'span', children, style, color, ...rest }) => {
   const typo = getTypographyStyle(variant);
-  
+
   const textStyle: React.CSSProperties = {
     fontFamily: getFontFamily(variant),
     fontSize: typo.fontSize,

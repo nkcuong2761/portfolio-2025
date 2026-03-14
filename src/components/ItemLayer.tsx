@@ -32,13 +32,13 @@ const StyledLayer = styled.button<StyledLayerProps>`
 
   /* colors per spec */
   color: ${(p) => themes[p.currentTheme].textIcon.neutral.primary};
-  background-color: ${(p) => (p.isActive ? 
-    themes[p.currentTheme].bg.accent.secondary : 
+  background-color: ${(p) => (p.isActive ?
+    themes[p.currentTheme].bg.accent.secondary :
     'transparent')};
 
   &:hover {
-    background-color: ${(p) => (p.isActive ? 
-    themes[p.currentTheme].bg.accent.secondary : 
+    background-color: ${(p) => (p.isActive ?
+    themes[p.currentTheme].bg.accent.secondary :
     themes[p.currentTheme].bg.neutral.hover)};
     color: ${(p) => themes[p.currentTheme].textIcon.neutral.primary};
   }
@@ -48,12 +48,16 @@ const StyledLayer = styled.button<StyledLayerProps>`
   }
 `;
 
-export const Layer: React.FC<LayerProps> = ({ label, icon: Icon, initialActive = false, onClick, ...props }) => {
+export const ItemLayer: React.FC<LayerProps & { isActive?: boolean }> = ({ label, icon: Icon, initialActive = false, isActive: controlledIsActive, onClick, ...props }) => {
   const { theme } = useTheme();
-  const [isActive, setIsActive] = useState<boolean>(initialActive);
+  const [internalIsActive, setInternalIsActive] = useState<boolean>(initialActive);
+
+  const isActive = controlledIsActive !== undefined ? controlledIsActive : internalIsActive;
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    setIsActive((s) => !s);
+    if (controlledIsActive === undefined) {
+      setInternalIsActive((s) => !s);
+    }
     if (onClick) onClick(e);
   };
 
@@ -74,12 +78,12 @@ export const Layer: React.FC<LayerProps> = ({ label, icon: Icon, initialActive =
         />
       )}
       <Text
-      variant='figmaSubtitleSmRegular'
-      color={themes[theme].textIcon.neutral.primary}>
+        variant='figmaSubtitleSmRegular'
+        color={themes[theme].textIcon.neutral.primary}>
         {label}
       </Text>
     </StyledLayer>
   );
 };
 
-export default Layer;
+export default ItemLayer;

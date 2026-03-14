@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { themes } from '../assets/colors/alias.ts';
 import { Text } from '../Text.tsx';
 import { useTheme } from '../contexts/ThemeContext.tsx';
-import { usePage, PageName } from '../contexts/PageContext.tsx';
+import { PageName } from '../contexts/PageContext.tsx';
 
 interface PageProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: PageName;
+  path: string;
   isProject?: boolean;
 }
 
@@ -41,14 +43,16 @@ const StyledChip = styled.button<StyledPageProps>`
   }
 `;
 
-export const Page: React.FC<PageProps> = ({ label, isProject = false, onClick, ...props }) => {
+export const Page: React.FC<PageProps> = ({ label, path, isProject = false, onClick, ...props }) => {
   const { theme } = useTheme();
-  const { currentPage, setCurrentPage } = usePage();
-  
-  const isActive = currentPage === label;
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Simple check if current path matches the link
+  const isActive = location.pathname === path;
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    setCurrentPage(label);
+    navigate(path);
     if (onClick) onClick(e);
   };
 

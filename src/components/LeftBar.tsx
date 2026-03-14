@@ -1,39 +1,41 @@
 import React from 'react';
 import { themes } from '../assets/colors/alias.ts';
 import { useTheme } from '../contexts/ThemeContext.tsx';
+import { usePage } from '../contexts/PageContext.tsx';
 import { Text } from '../Text.tsx';
-import {ReactComponent as FigmaLogo} from '../assets/icons/figma-logo.svg';
-import {ReactComponent as Frame} from '../assets/icons/frame.svg';
+import { ReactComponent as FigmaLogo } from '../assets/icons/figma-logo.svg';
+import { ReactComponent as Frame } from '../assets/icons/frame.svg';
 import { LayoutVertical } from './LayoutVertical.tsx';
 import { LayoutHorizontal } from './LayoutHorizontal.tsx';
 import Divider from './Divider.tsx';
 import Chip from './Chip.tsx';
 import Page from './ItemPage.tsx';
-import Layer from './ItemLayer.tsx';
+import ItemLayer from './ItemLayer.tsx';
 import { ThemeSwitcher } from './ThemeSwitcher.tsx';
 
 export const LeftBar: React.FC = () => {
   const { theme } = useTheme();
+  const { layers, activeLayer, setTargetLayer } = usePage();
   const theming = themes[theme];
 
   return (
     <LayoutVertical
-    padding='16px 0'
-    width='224px'
-    height='100vh'
-    gap='8px'
-    backgroundColor={theming.bg.page.lighter}
-    style={{
-      borderRight: '1px solid ' + theming.stroke.neutral.divider,
-      zIndex: 10,
-      flexShrink: 0,
-    }}>
+      padding='16px 0'
+      width='224px'
+      height='100vh'
+      gap='8px'
+      backgroundColor={theming.bg.page.lighter}
+      style={{
+        borderRight: '1px solid ' + theming.stroke.neutral.divider,
+        zIndex: 10,
+        flexShrink: 0,
+      }}>
 
       {/* Sidebar Header */}
       <LayoutVertical
-      padding='0 12px 4px 12px'
-      gap='12px'
-      alignSelf='stretch'>
+        padding='0 12px 4px 12px'
+        gap='12px'
+        alignSelf='stretch'>
         <LayoutHorizontal
           justifyContent='space-between'
           alignItems='center'
@@ -42,35 +44,35 @@ export const LeftBar: React.FC = () => {
             width={16}
             height={16}
             stroke={theming.textIcon.neutral.primary}
-            style={{ flexShrink: 0 }}/>
-          <ThemeSwitcher initialActive={false}/>
+            style={{ flexShrink: 0 }} />
+          <ThemeSwitcher initialActive={false} />
         </LayoutHorizontal>
-        <Text 
-        variant='figmaBodyMdEmphasize'
-        color={theming.textIcon.neutral.primary}>
+        <Text
+          variant='figmaBodyMdEmphasize'
+          color={theming.textIcon.neutral.primary}>
           Kim's portfolio
         </Text>
         <LayoutHorizontal
-        gap='4px'>
-          <Text 
-          variant='figmaSubtitleSmMedium'
-          color={theming.textIcon.neutral.secondary}>
+          gap='4px'>
+          <Text
+            variant='figmaSubtitleSmMedium'
+            color={theming.textIcon.neutral.secondary}>
             Draft
           </Text>
           <LayoutVertical
-          backgroundColor={theming.bg.accent.tertiary}
-          padding='1px 3px'
-          style={{ borderRadius: '4px' }}>
-            <Text 
-            variant='figmaSubtitleSmMedium' 
-            color={theming.textIcon.accent.primary}>
+            backgroundColor={theming.bg.accent.tertiary}
+            padding='1px 3px'
+            style={{ borderRadius: '4px' }}>
+            <Text
+              variant='figmaSubtitleSmMedium'
+              color={theming.textIcon.accent.primary}>
               Free
             </Text>
           </LayoutVertical>
         </LayoutHorizontal>
       </LayoutVertical>
 
-      <Divider/>
+      <Divider />
 
       {/* Chips group */}
       <LayoutHorizontal
@@ -78,11 +80,11 @@ export const LeftBar: React.FC = () => {
         gap='4px'
         alignSelf='stretch'
       >
-        <Chip label='File' initialActive/>
-        <Chip label='Assets'/>
+        <Chip label='File' initialActive />
+        <Chip label='Assets' />
       </LayoutHorizontal>
 
-      <Divider/>
+      <Divider />
 
       {/* Pages */}
       <LayoutVertical
@@ -91,48 +93,63 @@ export const LeftBar: React.FC = () => {
         alignSelf='stretch'
       >
         <LayoutHorizontal
-        padding='0 6px'>
+          padding='0 6px'>
           <Text
-          variant='figmaSubtitleSmEmphasize'
-          color={theming.textIcon.neutral.primary}>
+            variant='figmaSubtitleSmEmphasize'
+            color={theming.textIcon.neutral.primary}>
             Pages
           </Text>
         </LayoutHorizontal>
         <LayoutVertical
-        gap='8px'
-        alignSelf='stretch'>
-          <Page label='Home'/>
-          <Page label='Techcombank Design System' isProject={true}/>
-          <Page label='Foreign Currency Payroll' isProject={true}/>
-          <Page label='GoodHood.SG' isProject={true}/>
-          <Page label='About me'/>
-          <Page label='Resume'/>
+          gap='8px'
+          alignSelf='stretch'>
+          <Page label='Home' path='/home' />
+          <Page label='Techcombank Design System' isProject={true} path='/tcbds' />
+          <Page label='Batch payment' isProject={true} path='/batch-payment' />
+          <Page label='GoodHood.SG' isProject={true} path='/goodhood' />
+          <Page label='About me' path='/about-me' />
+          <Page label='Resume' path='/resume' />
         </LayoutVertical>
         {/* <Message 
         description='All 3 free pages used.' 
         link='Get unlimited pages & more'/> */}
       </LayoutVertical>
 
-      <Divider/>
+      <Divider />
 
       {/* Layers */}
       <LayoutVertical
-      padding='4px 8px 10px 8px'
-      gap='12px'
-      alignSelf='stretch'>
+        padding='4px 8px 10px 8px'
+        gap='12px'
+        alignSelf='stretch'>
         <LayoutHorizontal
-        padding='0 6px'>
+          padding='0 6px'>
           <Text
-          variant='figmaSubtitleSmEmphasize'
-          color={theming.textIcon.neutral.primary}>
+            variant='figmaSubtitleSmEmphasize'
+            color={theming.textIcon.neutral.primary}>
             Layers
           </Text>
         </LayoutHorizontal>
         <LayoutVertical
-        gap='8px'
-        alignSelf='stretch'>
-          <Layer icon={Frame} label='Page' initialActive/>
-          <Layer icon={Frame} label='Layer'/>
+          gap='8px'
+          alignSelf='stretch'>
+
+          {layers.length > 0 ? (
+            layers.map((layer, index) => (
+              <ItemLayer
+                key={index}
+                icon={Frame}
+                label={layer}
+                isActive={activeLayer === layer}
+                onClick={() => setTargetLayer(layer)}
+              />
+            ))
+          ) : (
+            <>
+              <ItemLayer icon={Frame} label='Page' initialActive />
+              <ItemLayer icon={Frame} label='Layer' />
+            </>
+          )}
         </LayoutVertical>
       </LayoutVertical>
 

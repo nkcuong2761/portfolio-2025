@@ -10,6 +10,7 @@ interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
   backgroundColor?: string;
   alignSelf?: string;
   justifyContent?: string;
+  flex?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
@@ -26,9 +27,10 @@ const Vertical = styled.div<LayoutProps>`
   background-color: ${(p) => p.backgroundColor || 'transparent'};
   align-self: ${(p) => p.alignSelf || 'auto'};
   justify-content: ${(p) => p.justifyContent || 'flex-start'};
+  flex: ${(p) => p.flex || 'none'};
 `;
 
-export const LayoutVertical: React.FC<LayoutProps> = ({
+export const LayoutVertical = React.forwardRef<HTMLDivElement, LayoutProps>(({
   alignItems,
   gap,
   padding,
@@ -37,24 +39,28 @@ export const LayoutVertical: React.FC<LayoutProps> = ({
   backgroundColor,
   alignSelf,
   justifyContent,
+  flex,
   style,
   children,
   onClick,
   ...rest
-}) => {
+}, ref) => {
   return (
-  <Vertical
-    alignItems={alignItems}
-    gap={gap}
-    padding={padding}
-    width={width}
-    height={height}
-    backgroundColor={backgroundColor}
-    alignSelf={alignSelf}
-    justifyContent={justifyContent}
-    style={style}
-    onClick={onClick}
-    {...rest}>
-    {children}
-  </Vertical>
-)}
+    <Vertical
+      ref={ref}
+      alignItems={alignItems}
+      gap={gap}
+      padding={padding}
+      width={width}
+      height={height}
+      backgroundColor={backgroundColor}
+      alignSelf={alignSelf}
+      justifyContent={justifyContent}
+      flex={flex}
+      style={style}
+      onClick={onClick}
+      {...rest}>
+      {children}
+    </Vertical>
+  )
+});

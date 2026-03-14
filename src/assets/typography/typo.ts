@@ -91,10 +91,18 @@ export const typography = {
         },
       },
       sm: {
-        fontSize: baseFontSizes.sm,
-        lineHeight: lineHeights.relaxed,
-        fontWeight: fontWeights.regular,
-        letterSpacing: letterSpacing.normal,
+        regular: {
+          fontSize: baseFontSizes.sm,
+          lineHeight: lineHeights.relaxed,
+          fontWeight: fontWeights.regular,
+          letterSpacing: letterSpacing.normal,
+        },
+        emphasize: {
+          fontSize: baseFontSizes.sm,
+          lineHeight: lineHeights.relaxed,
+          fontWeight: fontWeights.emphasize,
+          letterSpacing: letterSpacing.normal,
+        },
       }
     }
   },

@@ -1,25 +1,33 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { themes } from '../assets/colors/alias.ts';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 import { useCollapse } from '../contexts/CollapseContext.tsx';
-import { usePage } from '../contexts/PageContext.tsx';
 import { LayoutVertical } from '../components/LayoutVertical.tsx';
 import { LayoutHorizontal } from '../components/LayoutHorizontal.tsx';
 import { Text } from '../Text.tsx';
 import headshotImg from '../assets/images/headshot.png';
 import tcbLogoImg from '../assets/images/tcb-logo.png';
 import techcombankDSImg from '../assets/images/tcb-ds.png';
-import foreignCurrencyImg from '../assets/images/fcy-payroll.png';
+import mixBatchImg from '../assets/images/mix-batch.webp';
 import goodhoodImg from '../assets/images/gh-mockup.png';
+import { useLayerNavigation } from '../hooks/useLayerNavigation.ts';
+
+const sections = ['Greetings', 'Projects'];
 
 export const Home: React.FC = () => {
   const { theme } = useTheme();
   const theming = themes[theme];
   const { isCollapsed } = useCollapse();
-  const { setCurrentPage } = usePage();
+  const navigate = useNavigate();
+  const pageRef = React.useRef<HTMLDivElement>(null);
+
+  useLayerNavigation(sections, pageRef);
 
   return (
     <LayoutVertical
+      ref={pageRef}
+      className='page-scroll'
       width='100%'
       height='100vh'
       padding='92px 48px'
@@ -37,10 +45,11 @@ export const Home: React.FC = () => {
 
       {/* Greeting Section */}
       <LayoutVertical
+        id='Greetings'
         alignSelf='stretch'
         gap='8px'>
         <Text
-          variant='figmaSubtitleSmRegular'
+          variant='mainBodySmRegular'
           color={theming.textIcon.neutral.tertiary}>
           Greetings
         </Text>
@@ -70,7 +79,7 @@ export const Home: React.FC = () => {
             <Text variant='mainDisplayMdRegular'>focused on</Text>
             <Text variant='mainDisplayMdRegular'>building </Text>
             <Text variant='mainDisplayMdRegular'>scalable </Text>
-            <Text variant='mainDisplayMdRegular' color={theming.textIcon.accent.primary} style={{textDecoration: 'underline'}}>design systems.</Text>
+            <Text variant='mainDisplayMdRegular' color={theming.textIcon.accent.primary} style={{ textDecoration: 'underline' }}>design systems.</Text>
           </LayoutHorizontal>
           <LayoutHorizontal
             alignItems='center'
@@ -110,22 +119,23 @@ export const Home: React.FC = () => {
 
       {/* Projects section */}
       <LayoutVertical
+        id='Projects'
         alignSelf='stretch'
         gap='8px'>
         <Text
-          variant='figmaSubtitleSmRegular'
+          variant='mainBodySmRegular'
           color={theming.textIcon.neutral.tertiary}>
           Projects
         </Text>
-        
+
         <LayoutVertical
           alignSelf='stretch'
           gap='32px'>
-          
+
           {/* First Project - Full Width - Techcombank Design System */}
           <LayoutVertical
             alignSelf='stretch'
-            onClick={() => setCurrentPage('Techcombank Design System')}
+            onClick={() => navigate('/tcbds')}
             style={{
               borderRadius: '12px',
               border: `1px solid ${theming.stroke.neutral.border}`,
@@ -135,27 +145,27 @@ export const Home: React.FC = () => {
             }}>
             {/* Project Image Container */}
             <LayoutHorizontal
-            backgroundColor={theming.bg.neutral.secondary}
-            alignSelf='stretch'
-            style={{overflow: 'hidden', position: 'relative', flex: 1}}>
-              <img 
-              src={techcombankDSImg} 
-              alt="Techcombank Design System" 
-              onError={(e) => {
-                console.log('Image failed to load:', e);
-                e.currentTarget.style.backgroundColor = '#f0f0f0';
-              }}
-              onLoad={(e) => {
-                console.log('Image loaded successfully');
-              }}
-              style={{
-                width: '783px',
-                objectFit: 'cover',
-                position: 'absolute',
-                left: '50%',
-                top: '50%',
-                transform: 'translate(-50%, -50%)',
-              }} />
+              backgroundColor={theming.bg.neutral.secondary}
+              alignSelf='stretch'
+              style={{ overflow: 'hidden', position: 'relative', flex: 1 }}>
+              <img
+                src={techcombankDSImg}
+                alt="Techcombank Design System"
+                onError={(e) => {
+                  console.log('Image failed to load:', e);
+                  e.currentTarget.style.backgroundColor = '#f0f0f0';
+                }}
+                onLoad={(e) => {
+                  console.log('Image loaded successfully');
+                }}
+                style={{
+                  width: '783px',
+                  objectFit: 'cover',
+                  position: 'absolute',
+                  left: '50%',
+                  top: '50%',
+                  transform: 'translate(-50%, -50%)',
+                }} />
             </LayoutHorizontal>
             {/* Project Info */}
             <LayoutVertical
@@ -180,10 +190,10 @@ export const Home: React.FC = () => {
             alignSelf='stretch'
             gap='32px'
             alignItems='center'>
-            
-            {/* Second Project - Foreign Currency Payroll */}
+
+            {/* Second Project - Batch payment */}
             <LayoutVertical
-              onClick={() => setCurrentPage('Foreign Currency Payroll')}
+              onClick={() => navigate('/batch-payment')}
               style={{
                 flex: 1,
                 borderRadius: '12px',
@@ -196,19 +206,19 @@ export const Home: React.FC = () => {
               <LayoutHorizontal
                 backgroundColor={theming.bg.neutral.secondary}
                 alignSelf='stretch'
-                style={{overflow: 'hidden', position: 'relative', flex: 1}}>
-                <img 
-                src={foreignCurrencyImg} 
-                alt="Foreign Currency Payroll" 
-                style={{
-                  width: '100%',
-                  objectFit: 'cover',
-                  borderRadius: '8px',
-                  boxShadow: '0px 85px 78px 0px rgba(39,39,39,0.03), 0px 25.625px 23.515px 0px rgba(39,39,39,0.04), 0px 10.643px 9.767px 0px rgba(39,39,39,0.05), 0px 3.849px 3.532px 0px rgba(39,39,39,0.08)',
-                  position: 'absolute',
-                  right: '-10%',
-                  top: '10%',
-                }} />
+                style={{ overflow: 'hidden', position: 'relative', flex: 1 }}>
+                <img
+                  src={mixBatchImg}
+                  alt="Batch payment"
+                  style={{
+                    width: '100%',
+                    objectFit: 'cover',
+                    borderRadius: '8px',
+                    boxShadow: '0px 85px 78px 0px rgba(39,39,39,0.03), 0px 25.625px 23.515px 0px rgba(39,39,39,0.04), 0px 10.643px 9.767px 0px rgba(39,39,39,0.05), 0px 3.849px 3.532px 0px rgba(39,39,39,0.08)',
+                    position: 'absolute',
+                    right: '-10%',
+                    top: '10%',
+                  }} />
               </LayoutHorizontal>
               {/* Project Info */}
               <LayoutVertical
@@ -218,7 +228,7 @@ export const Home: React.FC = () => {
                 <Text
                   variant='mainHeadingMd'
                   color={theming.textIcon.neutral.primary}>
-                  Foreign currency payroll
+                  Batch payment
                 </Text>
                 <Text
                   variant='mainBodyMdRegular'
@@ -230,7 +240,7 @@ export const Home: React.FC = () => {
 
             {/* Third Project - GoodHood.SG */}
             <LayoutVertical
-              onClick={() => setCurrentPage('GoodHood.SG')}
+              onClick={() => navigate('/goodhood')}
               style={{
                 flex: 1,
                 borderRadius: '12px',
@@ -243,20 +253,20 @@ export const Home: React.FC = () => {
               <LayoutHorizontal
                 backgroundColor={theming.bg.neutral.secondary}
                 alignSelf='stretch'
-                style={{overflow: 'hidden', position: 'relative', flex: 1}}>
-                <img 
-                src={goodhoodImg} 
-                alt="GoodHood.SG" 
-                style={{
-                  width: '170%',
-                  objectFit: 'cover',
-                  borderRadius: '8px',
-                  boxShadow: '0px 85px 78px 0px rgba(39,39,39,0.03), 0px 25.625px 23.515px 0px rgba(39,39,39,0.04), 0px 10.643px 9.767px 0px rgba(39,39,39,0.05), 0px 3.849px 3.532px 0px rgba(39,39,39,0.08)',
-                  position: 'absolute',
-                  left: '-50%',
-                  top: '-20%',
-                  transform: 'rotate(20deg)',
-                }} />
+                style={{ overflow: 'hidden', position: 'relative', flex: 1 }}>
+                <img
+                  src={goodhoodImg}
+                  alt="GoodHood.SG"
+                  style={{
+                    width: '170%',
+                    objectFit: 'cover',
+                    borderRadius: '8px',
+                    boxShadow: '0px 85px 78px 0px rgba(39,39,39,0.03), 0px 25.625px 23.515px 0px rgba(39,39,39,0.04), 0px 10.643px 9.767px 0px rgba(39,39,39,0.05), 0px 3.849px 3.532px 0px rgba(39,39,39,0.08)',
+                    position: 'absolute',
+                    left: '-50%',
+                    top: '-20%',
+                    transform: 'rotate(20deg)',
+                  }} />
               </LayoutHorizontal>
               {/* Project Info */}
               <LayoutVertical
@@ -279,7 +289,7 @@ export const Home: React.FC = () => {
           </LayoutHorizontal>
         </LayoutVertical>
       </LayoutVertical>
-      
+
     </LayoutVertical>
   );
 };
