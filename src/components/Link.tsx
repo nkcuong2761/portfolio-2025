@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
-import { useTheme } from '../ThemeContext.tsx';
+import { useTheme } from '../contexts/ThemeContext.tsx';
 import { Text } from '../Text.tsx';
 
+type ThemeName = keyof typeof themes;
+
 interface StyledLinkProps {
-  label: String;
-  currentTheme?: 'light' | 'dark';
+  label: string;
+  currentTheme?: ThemeName;
 }
 
 const StyledLink = styled.text<StyledLinkProps>`
@@ -15,16 +17,16 @@ const StyledLink = styled.text<StyledLinkProps>`
   transition: all 0.1s ease-in-out;
 
   // Default state
-  color: ${(p) => themes[p.currentTheme ?? 'dark'].textIcon.accent.primary};
+  color: ${(p) => themes[p.currentTheme ?? 'zimaBlue'].textIcon.accent.primary};
 
   // Hover state
   &:hover {
-    color: ${(p) => themes[p.currentTheme ?? 'dark'].textIcon.accent.primary};
+    color: ${(p) => themes[p.currentTheme ?? 'zimaBlue'].textIcon.accent.primary};
     text-decoration: underline;
   }
 
   &:active {
-    color: ${(p) => themes[p.currentTheme ?? 'dark'].textIcon.accent.hover};
+    color: ${(p) => themes[p.currentTheme ?? 'zimaBlue'].textIcon.accent.hover};
   }
 `;
 
@@ -32,7 +34,7 @@ export const Link: React.FC<StyledLinkProps> = ({
   label,
   ...props
 }) => {
-  const {theme} = useTheme();
+  const { theme } = useTheme();
 
   return (
     <StyledLink
