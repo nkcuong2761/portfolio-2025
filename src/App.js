@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext.tsx';
 import { themes } from './assets/colors/alias.ts';
 import { CollapseProvider } from './contexts/CollapseContext.tsx';
@@ -18,7 +18,7 @@ import { GoodHood } from './pages/GoodHood.tsx';
 const AppContent = () => {
   const { theme } = useTheme();
   return (
-    <BrowserRouter>
+    <HashRouter>
       <LayoutHorizontal
         height='100vh'
         width='100%'
@@ -45,7 +45,7 @@ const AppContent = () => {
         <RightBar />
         <FloatingCollapseButton />
       </LayoutHorizontal>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
