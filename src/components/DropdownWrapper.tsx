@@ -3,9 +3,12 @@ import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 import DropdownItem from './DropdownItem.tsx';
-import { ReactComponent as SekiraIcon } from '../assets/themeIcons/sekira.svg';
-import { ReactComponent as SekiraDarkIcon } from '../assets/themeIcons/sekira-dark.svg';
+import { ReactComponent as SerikaDarkIcon } from '../assets/themeIcons/serika-dark.svg';
 import { ReactComponent as ZimaBlueIcon } from '../assets/themeIcons/zima-blue.svg';
+import { ReactComponent as RosePineIcon } from '../assets/themeIcons/rose-pine.svg';
+import { ReactComponent as TerrazzoIcon } from '../assets/themeIcons/terrazzo.svg';
+import { ReactComponent as PaleNimbusIcon } from '../assets/themeIcons/pale-nimbus.svg';
+import { ReactComponent as TerraIcon } from '../assets/themeIcons/terra.svg';
 
 interface DropdownWrapperProps {
   isOpen: boolean;
@@ -56,9 +59,12 @@ export const DropdownWrapper: React.FC<DropdownWrapperProps> = ({ isOpen, onItem
 
   const getThemeIcon = (themeName: string) => {
     const iconMap: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> = {
-      sekira: SekiraIcon,
-      sekiraDark: SekiraDarkIcon,
+      serikaDark: SerikaDarkIcon,
       zimaBlue: ZimaBlueIcon,
+      rosePine: RosePineIcon,
+      terrazzo: TerrazzoIcon,
+      paleNimbus: PaleNimbusIcon,
+      terra: TerraIcon
     };
     return iconMap[themeName];
   };

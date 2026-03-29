@@ -39,12 +39,11 @@ const FloatingButton = styled.button<FloatingButtonProps>`
 
   &:hover {
     background-color: ${(p) => themes[p.currentTheme].bg.neutral.tertiary};
-    transform: ${(p) => p.isCollapsed ? 'scale(1.05)' : 'scale(0.8)'};
+    transition: all 150ms ease-out;
   }
 
   &:active {
     transform: ${(p) => p.isCollapsed ? 'scale(0.95)' : 'scale(0.75)'};
-    transition: transform 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 `;
 
@@ -61,7 +60,7 @@ export const FloatingCollapseButton: React.FC = () => {
       <ArrowLineLeft
         width={16}
         height={16}
-        fill={themes[theme].textIcon.accent.onPrimary}
+        fill={themes[theme].textIcon.neutral.primary}
       />
     </FloatingButton>
   );

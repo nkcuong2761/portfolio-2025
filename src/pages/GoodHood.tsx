@@ -116,7 +116,7 @@ export const GoodHood: React.FC = () => {
           />
 
           <Text variant='mainBodyMdRegular' color={theming.textIcon.neutral.secondary}>
-            I joined <a href="https://www.goodhoodsg.com/" target="_blank" style={{ color: 'inherit' }}>GoodHood.SG</a> in May 2023 as a Product Designer, embarking on a journey to transform the digital neighborhood hub. From conducting research and refining UX to crafting compelling data visualizations and prototypes, I had the privilege of leading a comprehensive UI overhaul for our mobile apps. The result? The most significant update on GoodHood was released in August 2023.
+            I joined <a href="https://www.goodhoodsg.com/" target="_blank">GoodHood.SG</a> in May 2023 as a Product Designer, embarking on a journey to transform the digital neighborhood hub. From conducting research and refining UX to crafting compelling data visualizations and prototypes, I had the privilege of leading a comprehensive UI overhaul for our mobile apps. The result? The most significant update on GoodHood was released in August 2023.
           </Text>
 
           {/* Project Info Box */}
@@ -682,8 +682,8 @@ export const GoodHood: React.FC = () => {
               My journey at GoodHood.SG is a testament to the power of adaptability, user-centric design, and a commitment to creating a thriving community through digital connections.
             </Text>
             <LayoutHorizontal gap='24px'>
-              <a href="https://apps.apple.com/sg/app/goodhood-sg-neighbourhood-app/id1494686562" target="_blank" style={{ color: theming.textIcon.neutral.primary }}>Link to App Store</a>
-              <a href="https://play.google.com/store/apps/details?id=sg.goodhood.app&hl=en_SG&gl=US" target="_blank" style={{ color: theming.textIcon.neutral.primary }}>Link to Google Play</a>
+              <a href="https://apps.apple.com/sg/app/goodhood-sg-neighbourhood-app/id1494686562" target="_blank">Link to App Store</a>
+              <a href="https://play.google.com/store/apps/details?id=sg.goodhood.app&hl=en_SG&gl=US" target="_blank">Link to Google Play</a>
             </LayoutHorizontal>
           </LayoutVertical>
 

@@ -107,8 +107,8 @@ export const LeftBar: React.FC = () => {
           <Page label='Techcombank Design System' isProject={true} path='/tcbds' />
           <Page label='Batch payment' isProject={true} path='/batch-payment' />
           <Page label='GoodHood.SG' isProject={true} path='/goodhood' />
-          <Page label='About me' path='/about-me' />
-          <Page label='Resume' path='/resume' />
+          {/* <Page label='About me' path='/about-me' /> */}
+          <Page label='Resume↗' path='/resume' />
         </LayoutVertical>
         {/* <Message 
         description='All 3 free pages used.' 

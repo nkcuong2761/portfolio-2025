@@ -20,6 +20,12 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
+
+    const theming = themes[theme];
+    document.documentElement.style.setProperty('--selection-bg', theming.bg.accent.secondary);
+    document.documentElement.style.setProperty('--selection-color', theming.textIcon.neutral.tertiary);
+    document.documentElement.style.setProperty('--a-color', theming.textIcon.accent.primary);
+    document.documentElement.style.setProperty('--a-hover-color', theming.textIcon.accent.hover);
   }, [theme]);
 
   return <ThemeContext.Provider value={{ theme, setTheme, availableThemes }}>{children}</ThemeContext.Provider>;

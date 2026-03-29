@@ -79,7 +79,7 @@ export const Home: React.FC = () => {
             <Text variant='mainDisplayMdRegular'>focused on</Text>
             <Text variant='mainDisplayMdRegular'>building </Text>
             <Text variant='mainDisplayMdRegular'>scalable </Text>
-            <Text variant='mainDisplayMdRegular' color={theming.textIcon.accent.primary} style={{ textDecoration: 'underline' }}>design systems.</Text>
+            <Text variant='mainDisplayMdRegular'><a href='/tcbds'>design systems.</a></Text>
           </LayoutHorizontal>
           <LayoutHorizontal
             alignItems='center'

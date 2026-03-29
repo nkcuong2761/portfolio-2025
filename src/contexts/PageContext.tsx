@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-export type PageName = 'Home' | 'Techcombank Design System' | 'Batch payment' | 'GoodHood.SG' | 'About me' | 'Resume';
+export type PageName = 'Home' | 'Techcombank Design System' | 'Batch payment' | 'GoodHood.SG' | 'About me' | 'Resume↗';
 
 type PageContextType = {
   currentPage: PageName;

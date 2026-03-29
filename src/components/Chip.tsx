@@ -20,7 +20,7 @@ const StyledChip = styled.button<StyledChipProps>`
   border: none;
   padding: 4px 6px;
   border-radius: 4px;
-  cursor: pointer;
+  // cursor: pointer;
   transition: background-color 100ms ease, color 100ms ease;
 
   /* colors per spec */
@@ -29,17 +29,18 @@ const StyledChip = styled.button<StyledChipProps>`
       ? themes[p.currentTheme].textIcon.neutral.primary
       : themes[p.currentTheme].textIcon.neutral.secondary};
   background-color: ${(p) => (p.isActive ? themes[p.currentTheme].bg.neutral.hover : 'transparent')};
-
+ /*
   &:hover {
     background-color: ${(p) => themes[p.currentTheme].bg.neutral.hover};
     /* hover text color stays neutral.secondary per spec (unless active) */
     color: ${(p) =>
-      p.isActive ? themes[p.currentTheme].textIcon.neutral.primary : themes[p.currentTheme].textIcon.neutral.secondary};
+    p.isActive ? themes[p.currentTheme].textIcon.neutral.primary : themes[p.currentTheme].textIcon.neutral.secondary};
   }
 
   &:focus {
     outline: none;
   }
+  */
 `;
 
 export const Chip: React.FC<ChipProps> = ({ label, initialActive = false, onClick, ...props }) => {
@@ -57,7 +58,7 @@ export const Chip: React.FC<ChipProps> = ({ label, initialActive = false, onClic
       label={label}
       isActive={isActive}
       currentTheme={theme}
-      onClick={handleClick}
+      // onClick={handleClick}
       {...props}
     >
       <Text variant={isActive ? 'figmaSubtitleSmMedium' : 'figmaSubtitleSmMedium'}>
