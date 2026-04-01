@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio-2025/static/css/main.abb28e00.css",
-    "main.js": "/portfolio-2025/static/js/main.d258df01.js",
+    "main.js": "/portfolio-2025/static/js/main.84baedd3.js",
     "static/media/tcbds.webp": "/portfolio-2025/static/media/tcbds.048e71c86cba41acb32d.webp",
     "static/media/mockup-3phones.webp": "/portfolio-2025/static/media/mockup-3phones.8f8e3ca4bc6922784e2f.webp",
     "static/media/volunteer.webp": "/portfolio-2025/static/media/volunteer.717d520e03e51f86ea9e.webp",
@@ -38,29 +38,29 @@
     "static/media/ss-free-discovery.webp": "/portfolio-2025/static/media/ss-free-discovery.0bbfb253a0f7f7170d38.webp",
     "static/media/headshot.png": "/portfolio-2025/static/media/headshot.e3fe9b70ba7d3e08f1df.png",
     "static/media/mixpanel-logo.webp": "/portfolio-2025/static/media/mixpanel-logo.b413990863375432e64e.webp",
-    "static/media/palette.svg": "/portfolio-2025/static/media/palette.f1bf4b13beac10c860fd10b2e4e0f1f5.svg",
-    "static/media/dribbble-logo.svg": "/portfolio-2025/static/media/dribbble-logo.a1f4c1433953185eaf0db5974fc159ca.svg",
-    "static/media/medium-logo.svg": "/portfolio-2025/static/media/medium-logo.f80262efa14487e609fb1a59c1d9cce1.svg",
-    "static/media/figma-logo.svg": "/portfolio-2025/static/media/figma-logo.dfc3e3b2bab034db2a1302f9237ef5a6.svg",
-    "static/media/linkedin-logo.svg": "/portfolio-2025/static/media/linkedin-logo.05b2eca5b5b76a28e801a38bd48b2e6f.svg",
+    "static/media/palette.svg": "/portfolio-2025/static/media/palette.158033f3e3630446e618bf1c79cf37ff.svg",
+    "static/media/dribbble-logo.svg": "/portfolio-2025/static/media/dribbble-logo.f301d2704bd3b125ba62bf3d50210334.svg",
+    "static/media/medium-logo.svg": "/portfolio-2025/static/media/medium-logo.491d5f05509071f9a7b2686c527c6c1a.svg",
+    "static/media/figma-logo.svg": "/portfolio-2025/static/media/figma-logo.1ed763d0170246a21635c51cbe9f1ba4.svg",
     "index.html": "/portfolio-2025/index.html",
-    "static/media/arrow-square-out.svg": "/portfolio-2025/static/media/arrow-square-out.12f28bfc4f37987d868d5295847d7f3e.svg",
-    "static/media/chat.svg": "/portfolio-2025/static/media/chat.aeb2914167167b8128e5fa669676f54c.svg",
-    "static/media/arrow-line-right.svg": "/portfolio-2025/static/media/arrow-line-right.92beb46fe927dc18aabf3ce61d05c86c.svg",
-    "static/media/arrow-line-left.svg": "/portfolio-2025/static/media/arrow-line-left.502be64a8933829fe64e1ddc931a420a.svg",
-    "static/media/caret-down.svg": "/portfolio-2025/static/media/caret-down.f0105655416db7fb34448a7c70b96da8.svg",
-    "static/media/frame.svg": "/portfolio-2025/static/media/frame.23a017a8c6d88b4505e961f17a9590e0.svg",
-    "static/media/pale-nimbus.svg": "/portfolio-2025/static/media/pale-nimbus.1abe857dc9faf65f7b0ad6097ee3b89a.svg",
-    "static/media/rose-pine.svg": "/portfolio-2025/static/media/rose-pine.65cd61f3bbde78385bc6d280024e0ed9.svg",
-    "static/media/serika-dark.svg": "/portfolio-2025/static/media/serika-dark.c5b720b6e8465e9fc64b90f01bb790f8.svg",
-    "static/media/terra.svg": "/portfolio-2025/static/media/terra.71b5ef5253d28da38626ce2eb425f298.svg",
-    "static/media/terrazzo.svg": "/portfolio-2025/static/media/terrazzo.2566edaae9b8eca3b6349e188610a709.svg",
-    "static/media/zima-blue.svg": "/portfolio-2025/static/media/zima-blue.429c81a89716023b92abcf732dd06484.svg",
+    "static/media/linkedin-logo.svg": "/portfolio-2025/static/media/linkedin-logo.f704f1b2cd84506d12e86352853e392c.svg",
+    "static/media/arrow-square-out.svg": "/portfolio-2025/static/media/arrow-square-out.e998d17ebb8941739e085c603ac6e528.svg",
+    "static/media/chat.svg": "/portfolio-2025/static/media/chat.e20bafa8de88b79b943f79a089c579bc.svg",
+    "static/media/arrow-line-right.svg": "/portfolio-2025/static/media/arrow-line-right.b778e83cf327e0a572b8a47b9ee1a2b7.svg",
+    "static/media/arrow-line-left.svg": "/portfolio-2025/static/media/arrow-line-left.024e517d658a9ba0a7ea966b01e3a31e.svg",
+    "static/media/caret-down.svg": "/portfolio-2025/static/media/caret-down.2bb28b740a386d4f06c5f5b01a5d1683.svg",
+    "static/media/frame.svg": "/portfolio-2025/static/media/frame.046a4f19240f9dcdb793f8e1e3a8f8d0.svg",
+    "static/media/pale-nimbus.svg": "/portfolio-2025/static/media/pale-nimbus.4dc27d6359167b2a7916ceb7178527b4.svg",
+    "static/media/rose-pine.svg": "/portfolio-2025/static/media/rose-pine.1c28dd92ccd8ad688c9aeebfebe11919.svg",
+    "static/media/serika-dark.svg": "/portfolio-2025/static/media/serika-dark.1ce7e23c62574f960b7fdb13835cd2d3.svg",
+    "static/media/terra.svg": "/portfolio-2025/static/media/terra.5c7336fdbf50347bd154331671a99174.svg",
+    "static/media/terrazzo.svg": "/portfolio-2025/static/media/terrazzo.4ff6e379a3b1ac3c18b997f5faa1529a.svg",
+    "static/media/zima-blue.svg": "/portfolio-2025/static/media/zima-blue.daed01ff7a516e3410d1f45ab3900890.svg",
     "main.abb28e00.css.map": "/portfolio-2025/static/css/main.abb28e00.css.map",
-    "main.d258df01.js.map": "/portfolio-2025/static/js/main.d258df01.js.map"
+    "main.84baedd3.js.map": "/portfolio-2025/static/js/main.84baedd3.js.map"
   },
   "entrypoints": [
     "static/css/main.abb28e00.css",
-    "static/js/main.d258df01.js"
+    "static/js/main.84baedd3.js"
   ]
 }
