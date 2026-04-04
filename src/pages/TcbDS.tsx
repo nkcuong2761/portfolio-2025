@@ -116,11 +116,14 @@ export const TcbDS: React.FC = () => {
           </LayoutVertical>
 
           {/* Hero Image */}
-          {/* Hero Image */}
-          <ImageBlock
+          <img
             src={gifHero}
-            alt="Hero Image"
-            height="440px"
+            alt="Hero gif"
+            style={{
+              width: '100%',
+              objectFit: 'cover',
+              borderRadius: '12px',
+            }}
           />
 
           {/* Building a foundation section */}

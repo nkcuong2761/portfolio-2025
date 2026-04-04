@@ -14,7 +14,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const availableThemes = Object.keys(themes) as ThemeName[];
   const [theme, setTheme] = useState<ThemeName>(() => {
     const saved = typeof window !== 'undefined' ? localStorage.getItem('theme') : null;
-    return (saved as ThemeName) || availableThemes[0];
+    if (saved && availableThemes.includes(saved as ThemeName)) {
+      return saved as ThemeName;
+    }
+    return availableThemes[0];
   });
 
   useEffect(() => {
