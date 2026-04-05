@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
 import { useTheme } from '../contexts/ThemeContext.tsx';
@@ -21,6 +21,18 @@ interface CaretProps {
 
 const SwitcherContainer = styled.div`
   position: relative;
+`;
+
+const RedDot = styled.div`
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 6px;
+  height: 6px;
+  background-color: #ff3b30;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
 `;
 
 const StyledSwitcher = styled.button<StyledSwitcherProps>`
@@ -55,10 +67,22 @@ const CaretWrapper = styled.div<CaretProps>`
 
 export const ThemeSwitcher: React.FC<SwitcherProps> = ({ initialActive }) => {
   const [isActive, setIsActive] = useState<boolean>(initialActive ?? false);
+  const [showDot, setShowDot] = useState<boolean>(false);
   const { theme } = useTheme();
+
+  useEffect(() => {
+    const hasClicked = localStorage.getItem('hasClickedThemeSwitcher');
+    if (!hasClicked) {
+      setShowDot(true);
+    }
+  }, []);
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     setIsActive((s) => !s);
+    if (showDot) {
+      setShowDot(false);
+      localStorage.setItem('hasClickedThemeSwitcher', 'true');
+    }
   };
 
   const handleDropdownItemClick = () => {
@@ -83,6 +107,7 @@ export const ThemeSwitcher: React.FC<SwitcherProps> = ({ initialActive }) => {
             fill={isActive ? themes[theme].textIcon.neutral.primary : themes[theme].textIcon.neutral.secondary}/>
         </CaretWrapper>
       </StyledSwitcher>
+      {showDot && <RedDot />}
       <DropdownWrapper 
         isOpen={isActive} 
         onItemClick={handleDropdownItemClick} 
