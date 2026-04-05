@@ -8,7 +8,7 @@ import { PageName } from '../contexts/PageContext.tsx';
 
 interface PageProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: PageName;
-  path: string;
+  path?: string;
   isProject?: boolean;
 }
 
@@ -49,11 +49,13 @@ export const Page: React.FC<PageProps> = ({ label, path, isProject = false, onCl
   const location = useLocation();
 
   // Simple check if current path matches the link
-  const isActive = location.pathname === path;
+  const isActive = path ? location.pathname === path : false;
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    navigate(path);
     if (onClick) onClick(e);
+    if (!e.defaultPrevented && path) {
+      navigate(path);
+    }
   };
 
   return (

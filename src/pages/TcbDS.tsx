@@ -369,13 +369,14 @@ export const TcbDS: React.FC = () => {
                 style={{
                   borderRadius: '12px',
                   border: `1px solid ${theming.stroke.neutral.border}`,
-                  overflow: 'hidden',
+                  overflow: 'hidden'
                 }}>
                 <ImageBlock
                   src={imgAtoms}
                   alt="Atoms"
                   height="200px"
-                  style={{ border: 'none', borderRadius: 0 }}
+                  imageHeight="100%"
+                  style={{ border: 'none', borderRadius: 0, alignContent: 'center' }}
                 />
                 <LayoutVertical padding='16px 12px' gap='4px' style={{ minHeight: '140px' }}>
                   <Text
@@ -403,7 +404,8 @@ export const TcbDS: React.FC = () => {
                   src={imgMolecules}
                   alt="Molecules"
                   height="200px"
-                  style={{ border: 'none', borderRadius: 0 }}
+                  imageHeight="100%"
+                  style={{ border: 'none', borderRadius: 0, alignContent: 'center' }}
                 />
                 <LayoutVertical padding='16px 12px' gap='4px' style={{ minHeight: '140px' }}>
                   <Text
@@ -431,7 +433,8 @@ export const TcbDS: React.FC = () => {
                   src={imgOrganisms}
                   alt="Organisms"
                   height="200px"
-                  style={{ border: 'none', borderRadius: 0 }}
+                  imageHeight="100%"
+                  style={{ border: 'none', borderRadius: 0, alignContent: 'center' }}
                 />
                 <LayoutVertical padding='16px 12px' gap='4px' style={{ minHeight: '140px' }}>
                   <Text
@@ -459,7 +462,8 @@ export const TcbDS: React.FC = () => {
                   src={imgTemplates}
                   alt="Templates"
                   height="200px"
-                  style={{ border: 'none', borderRadius: 0 }}
+                  imageHeight="100%"
+                  style={{ border: 'none', borderRadius: 0, alignContent: 'center' }}
                 />
                 <LayoutVertical padding='16px 12px' gap='4px' style={{ minHeight: '140px' }}>
                   <Text

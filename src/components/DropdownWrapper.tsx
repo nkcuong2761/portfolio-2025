@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { themes } from '../assets/colors/alias.ts';
 import { useTheme } from '../contexts/ThemeContext.tsx';
 import DropdownItem from './DropdownItem.tsx';
+import { ReactComponent as GoogleIcon } from '../assets/icons/google.svg';
+import { ReactComponent as DuolingoIcon } from '../assets/icons/duolingo.svg';
 import { ReactComponent as SerikaDarkIcon } from '../assets/themeIcons/serika-dark.svg';
 import { ReactComponent as ZimaBlueIcon } from '../assets/themeIcons/zima-blue.svg';
 import { ReactComponent as RosePineIcon } from '../assets/themeIcons/rose-pine.svg';
@@ -59,8 +61,10 @@ export const DropdownWrapper: React.FC<DropdownWrapperProps> = ({ isOpen, onItem
 
   const getThemeIcon = (themeName: string) => {
     const iconMap: Record<string, React.FunctionComponent<React.SVGProps<SVGSVGElement>>> = {
+      zimaBlue: ZimaBlueIcon, // Default theme
+      google: GoogleIcon,
+      duolingo: DuolingoIcon,
       serikaDark: SerikaDarkIcon,
-      zimaBlue: ZimaBlueIcon,
       rosePine: RosePineIcon,
       terrazzo: TerrazzoIcon,
       paleNimbus: PaleNimbusIcon,

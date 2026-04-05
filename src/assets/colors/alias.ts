@@ -113,6 +113,124 @@ export const zimaBlue: ThemeColors = {
   }
 };
 
+export const duolingo: ThemeColors = {
+  // Background colors
+  bg: {
+    page: {
+      muted: '#ffffff',
+      lighter: '#ffffff',
+      darker: '#EDFFD0'
+    },
+    neutral: {
+      primary: '#FFFFFF',
+      secondary: '#F1F1F1',
+      tertiary: '#D0D0D0',
+      hover: 'rgba(88, 204, 2, 0.2)',
+      secondaryHover: 'rgba(88, 204, 2, 0.1500)',
+      tertiaryHover: 'rgba(88, 204, 2, 0.1000)',
+      alpha: 'rgba(88, 204, 2, 0.0500)'
+    },
+    accent: {
+      primary: '#58cc02',
+      secondary: 'rgba(88, 204, 2, 0.3000)',
+      tertiary: 'rgba(49, 183, 247, 0.1000)',
+      hover: '#9eff07',
+      secondaryHover: 'rgba(158, 255, 7, 0.3000)',
+      tertiaryHover: 'rgba(49, 183, 247, 0.2000)'
+    }
+  },
+
+  // Text and icon colors
+  textIcon: {
+    neutral: {
+      primary: '#58cc02',
+      secondary: '#0f0f3d',
+      tertiary: '#989898'
+    },
+    accent: {
+      primary: '#31b7f7',
+      onPrimary: '#ffffff',
+      hover: '#0cabf8'
+    },
+    logo: {
+      back: "#58cc02",
+      stroke: "#0f0f3d",
+      fill: "#ffffff"
+    }
+  },
+
+  // Stroke colors
+  stroke: {
+    neutral: {
+      border: 'rgba(15, 15, 61, 0.2000)',
+      divider: 'rgba(15, 15, 61, 0.1000)'
+    },
+    accent: {
+      border: '#58cc02',
+      divider: 'rgba(88, 204, 2, 0.5000)'
+    }
+  }
+};
+
+export const google: ThemeColors = {
+  // Background colors
+  bg: {
+    page: {
+      muted: '#ffffff',
+      lighter: '#fcfcfc',
+      darker: '#f8f9fa'
+    },
+    neutral: {
+      primary: '#e8f0fe',
+      secondary: '#fef7e1',
+      tertiary: '#fce8e6',
+      hover: '#facdc9ff',
+      secondaryHover: '#fef7e1',
+      tertiaryHover: '#fce8e6',
+      alpha: 'rgba(252, 232, 230, 0.5000)'
+    },
+    accent: {
+      primary: '#1a73e7',
+      secondary: 'rgba(26, 115, 231, 0.3000)',
+      tertiary: '#e8f0fe',
+      hover: '#195abc',
+      secondaryHover: 'rgba(26, 115, 231, 0.4000)',
+      tertiaryHover: 'rgba(232, 240, 254, 0.3000)'
+    }
+  },
+
+  // Text and icon colors
+  textIcon: {
+    neutral: {
+      primary: '#202124',
+      secondary: '#5f6368',
+      tertiary: '#a2a5a8'
+    },
+    accent: {
+      primary: '#1a73e7',
+      onPrimary: '#e8f0fe',
+      hover: '#195abc'
+    },
+    logo: {
+      back: "#ffffff",
+      stroke: "#202124",
+      fill: "conic-gradient(from 90deg at 50% 50%, #4285F4 0deg, #4285F4 26.009807288646698deg, #34A853 100.38461208343506deg, #F4B70A 180deg, #EA4234 289.45953369140625deg, #EA4234 360deg)"
+    }
+  },
+
+  // Stroke colors
+  stroke: {
+    neutral: {
+      border: 'rgba(95, 99, 104, 0.3000)',
+      divider: 'rgba(95, 99, 104, 0.2000)'
+    },
+    accent: {
+      border: '#1a73e7',
+      divider: 'rgba(26, 115, 231, 0.5000)'
+    }
+  }
+};
+
 export const serikaDark: ThemeColors = {
   // Background colors
   bg: {
@@ -410,6 +528,8 @@ export const terra: ThemeColors = {
 
 export const themes = {
   zimaBlue: zimaBlue,
+  duolingo: duolingo,
+  google: google,
   serikaDark: serikaDark,
   rosePine: rosePine,
   terrazzo: terrazzo,

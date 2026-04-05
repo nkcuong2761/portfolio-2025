@@ -13,6 +13,25 @@ import Page from './ItemPage.tsx';
 import ItemLayer from './ItemLayer.tsx';
 import { ThemeSwitcher } from './ThemeSwitcher.tsx';
 
+import resumeZimaBlue from '../assets/resume/kimcuong-resume-zima-blue.pdf';
+import resumeDuolingo from '../assets/resume/kimcuong-resume-duolingo.pdf';
+import resumeGoogle from '../assets/resume/kimcuong-resume-google.pdf';
+import resumeSerikaDark from '../assets/resume/kimcuong-resume-serika-dark.pdf';
+import resumeRosePine from '../assets/resume/kimcuong-resume-rose-pine.pdf';
+import resumeTerrazzo from '../assets/resume/kimcuong-resume-terrazzo.pdf';
+import resumePaleNimbus from '../assets/resume/kimcuong-resume-pale-nimbus.pdf';
+import resumeTerra from '../assets/resume/kimcuong-resume-terra.pdf';
+
+const resumeMap: Record<string, string> = {
+  zimaBlue: resumeZimaBlue,
+  duolingo: resumeDuolingo,
+  google: resumeGoogle,
+  serikaDark: resumeSerikaDark,
+  rosePine: resumeRosePine,
+  terrazzo: resumeTerrazzo,
+  paleNimbus: resumePaleNimbus,
+  terra: resumeTerra
+};
 export const LeftBar: React.FC = () => {
   const { theme } = useTheme();
   const { layers, activeLayer, setTargetLayer } = usePage();
@@ -108,7 +127,13 @@ export const LeftBar: React.FC = () => {
           <Page label='Batch payment' isProject={true} path='/batch-payment' />
           <Page label='GoodHood.SG' isProject={true} path='/goodhood' />
           {/* <Page label='About me' path='/about-me' /> */}
-          <Page label='Resume↗' path='/resume' />
+          <Page
+            label='Resume↗'
+            onClick={(e) => {
+              e.preventDefault();
+              window.open(resumeMap[theme], '_blank');
+            }}
+          />
         </LayoutVertical>
         {/* <Message 
         description='All 3 free pages used.' 
