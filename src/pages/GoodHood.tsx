@@ -110,9 +110,9 @@ export const GoodHood: React.FC = () => {
           <img
             src={mockup1Phone}
             alt="GoodHood Banner"
-            height="440px"
+            height="600px"
             width="100%"
-            style={{ borderRadius: '12px' }}
+            style={{ borderRadius: '12px', objectFit: 'cover' }}
           />
 
           <Text variant='mainBodyMdRegular' color={theming.textIcon.neutral.secondary}>

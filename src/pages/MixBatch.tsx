@@ -117,7 +117,7 @@ export const MixBatch: React.FC = () => {
           <ImageBlock
             src={heroImg}
             alt="Batch payment"
-            height="440px"
+            height="600px"
             imageWidth="80%"
             imageLeft="10%"
             imageTop="10%"
