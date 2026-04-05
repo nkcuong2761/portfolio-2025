@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.abb28e00.css",
-    "main.js": "/static/js/main.95d27c30.js",
+    "main.js": "/static/js/main.99a50122.js",
     "static/media/tcbds.webp": "/static/media/tcbds.048e71c86cba41acb32d.webp",
     "static/media/kimcuong-resume-google.pdf": "/static/media/kimcuong-resume-google.d34e09d8716348d6145c.pdf",
     "static/media/kimcuong-resume-pale-nimbus.pdf": "/static/media/kimcuong-resume-pale-nimbus.9acfed9a5990eb763172.pdf",
@@ -67,10 +67,10 @@
     "static/media/duolingo.svg": "/static/media/duolingo.4c40e0d5e18b6130a26a6e1d2908846f.svg",
     "static/media/google.svg": "/static/media/google.346ef2090ef03ac58db8f16ab0521199.svg",
     "main.abb28e00.css.map": "/static/css/main.abb28e00.css.map",
-    "main.95d27c30.js.map": "/static/js/main.95d27c30.js.map"
+    "main.99a50122.js.map": "/static/js/main.99a50122.js.map"
   },
   "entrypoints": [
     "static/css/main.abb28e00.css",
-    "static/js/main.95d27c30.js"
+    "static/js/main.99a50122.js"
   ]
 }
